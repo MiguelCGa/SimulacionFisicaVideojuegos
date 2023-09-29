@@ -4,13 +4,15 @@
 
 class Particle {
 public:
-	Particle(Vector3 Pos, Vector3 Vel);
-	~Particle();
+	Particle(Vector3 Pos, float Inverse_mass, Vector3 Vel = Vector3(0, 0, 0), Vector3 Accel = Vector3(0, 0, 0));
+	virtual ~Particle();
 
-	void integrate(double t);
+	virtual void integrate(double t);
 
-private:
-	Vector3 vel;
+protected:
+	float inverse_mass;
+	float damping;
+	Vector3 vel, accel;
 	physx::PxTransform pose;
 	RenderItem* renderItem;
 
