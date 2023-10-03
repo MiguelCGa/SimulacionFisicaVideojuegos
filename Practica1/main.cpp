@@ -7,7 +7,7 @@
 #include "core.hpp"
 #include "RenderUtils.hpp"
 #include "callbacks.hpp"
-#include "Particle.h"
+#include "Projectile.h"
 
 #include <iostream>
 
@@ -31,7 +31,7 @@ PxDefaultCpuDispatcher*	gDispatcher = NULL;
 PxScene*				gScene      = NULL;
 ContactReportCallback gContactReportCallback;
 
-Particle* myParticle = nullptr;
+Projectile* myParticle = nullptr;
 
 // Initialize physics engine
 void initPhysics(bool interactive)
@@ -57,7 +57,7 @@ void initPhysics(bool interactive)
 	sceneDesc.simulationEventCallback = &gContactReportCallback;
 	gScene = gPhysics->createScene(sceneDesc);
 
-	myParticle = new Particle(Vector3(0, 0, 0), Vector3(1, 1, 0));
+	myParticle = new Projectile(Vector3(0, 0, 0), 1.0f/10.0f, Vector3(1, 0, 0).getNormalized() * 3000.0f);
 
 }
 

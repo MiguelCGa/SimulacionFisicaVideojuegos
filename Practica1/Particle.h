@@ -12,6 +12,7 @@ public:
 protected:
 	float inverse_mass;
 	float damping;
+	Vector3 gravity;
 	Vector3 vel, accel;
 	physx::PxTransform pose;
 	RenderItem* renderItem;

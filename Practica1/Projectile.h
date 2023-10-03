@@ -14,7 +14,10 @@ protected:
 	void adapt_real_gravity();
 	void adapt_real_values();
 
+	float conversion_factor() const;
+
 	float real_inverse_mass;
+	Vector3 real_gravity;
 	Vector3 real_vel;
 
 };
