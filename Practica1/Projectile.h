@@ -2,23 +2,21 @@
 
 #include "Particle.h"
 
+enum ProjectileType { CannonBall, TankBullet, Bullet, LaserBeam };
+
 class Projectile : public Particle {
 public:
-	Projectile(Vector3 Pos, float Inverse_mass, Vector3 Vel = Vector3(0, 0, 0), Vector3 Accel = Vector3(0, 0, 0));
-
-	void integrate(double t) override;
+	Projectile(Vector3 Pos, float Mass, Vector3 Vel = Vector3(0, 0, 0));
+	Projectile(Vector3 Pos, Vector3 Dir, ProjectileType type);
 
 protected:
-	void adapt_real_velocity();
-	void adapt_real_mass();
-	void adapt_real_gravity();
-	void adapt_real_values();
+	Vector3 get_simulated_velocity(Vector3 real_vel) const;
+	float get_simulated_mass(float real_mass, Vector3 real_vel) const;
+	Vector3 get_simulated_gravity(Vector3 real_gravity, Vector3 real_vel) const;
+	float get_conversion_factor(Vector3 real_vel, Vector3 sim_vel) const;
 
-	float conversion_factor() const;
-
-	float real_inverse_mass;
-	Vector3 real_gravity;
-	Vector3 real_vel;
-
+	static std::vector<float> projectileSpeeds;
+	static std::vector<float> projectileMasses;
+	static std::vector<Vector4> projectileColors;
 };
 

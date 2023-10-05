@@ -1,15 +1,15 @@
 #include "Particle.h"
 #include "constants.h"
+#include <iostream>
 
-Particle::Particle(Vector3 Pos, float Inverse_mass, Vector3 Vel, Vector3 Accel) :
-	inverse_mass(Inverse_mass),
+Particle::Particle(Vector3 Pos, float Mass, Vector3 Vel, Vector4 Color) :
+	inverse_mass((Mass <= 0.0f) ? 0.0f : 1.0f / Mass),
 	damping(values::damping),
 	pose(Pos), 
 	vel(Vel), 
-	accel(Accel),
+	accel(Vector3(0, 0, 0)),
 	gravity(0, values::gravity, 0),
-	renderItem(new RenderItem(CreateShape(physx::PxSphereGeometry(1)), &pose, Vector4(255, 255, 255, 1))) {
-
+	renderItem(new RenderItem(CreateShape(physx::PxSphereGeometry(1)), &pose, Color)) {
 }
 
 Particle::~Particle() {
@@ -22,6 +22,6 @@ void Particle::integrate(double t) {
 	if (inverse_mass <= 0.0f) return;
 
 	pose.p += vel * t;
-	vel += accel * t + gravity * t;
+	vel += (accel + gravity) * t;
 	vel *= powf(damping, t);
 }

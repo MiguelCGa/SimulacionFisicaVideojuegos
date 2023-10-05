@@ -33,6 +33,15 @@ ContactReportCallback gContactReportCallback;
 
 Projectile* myParticle = nullptr;
 
+std::vector<Particle*> particles;
+
+void shot(ProjectileType type) {
+	const auto cam = GetCamera();
+	Projectile* p = new Projectile(cam->getTransform().p, cam->getDir(), type);
+	particles.push_back(p);
+}
+
+
 // Initialize physics engine
 void initPhysics(bool interactive)
 {
@@ -56,9 +65,6 @@ void initPhysics(bool interactive)
 	sceneDesc.filterShader = contactReportFilterShader;
 	sceneDesc.simulationEventCallback = &gContactReportCallback;
 	gScene = gPhysics->createScene(sceneDesc);
-
-	myParticle = new Projectile(Vector3(0, 0, 0), 1.0f/10.0f, Vector3(1, 0, 0).getNormalized() * 3000.0f);
-
 }
 
 
@@ -72,15 +78,21 @@ void stepPhysics(bool interactive, double t)
 	gScene->simulate(t);
 	gScene->fetchResults(true);
 
-	myParticle->integrate(t);
+	for (auto& e : particles) {
+		e->integrate(t);
+	}
 }
 
 // Function to clean data
 // Add custom code to the begining of the function
 void cleanupPhysics(bool interactive)
 {
-	delete myParticle;
-	myParticle = nullptr;
+	//delete myParticle;
+	//myParticle = nullptr;
+	for (auto& e : particles) {
+		delete e;
+		e = nullptr;
+	}
 
 
 	PX_UNUSED(interactive);
@@ -105,7 +117,18 @@ void keyPress(unsigned char key, const PxTransform& camera)
 
 	switch(toupper(key))
 	{
-	//case 'B': break;
+	case '1': 
+		shot(ProjectileType::CannonBall);
+		break;
+	case '2': 
+		shot(ProjectileType::TankBullet);
+		break;
+	case '3': 
+		shot(ProjectileType::Bullet);
+		break;
+	case '4': 
+		shot(ProjectileType::LaserBeam);
+		break;
 	//case ' ':	break;
 	case ' ':
 	{
