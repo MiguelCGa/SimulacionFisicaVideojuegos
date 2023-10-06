@@ -4,7 +4,7 @@
 
 class Particle {
 public:
-	Particle(Vector3 Pos, float Mass, Vector3 Vel = Vector3(0, 0, 0), Vector4 Color = Vector4(255, 255, 255, 1));
+	Particle(Vector3 Pos, float Mass, Vector3 Vel = Vector3(0, 0, 0), Vector4 Color = Vector4(255, 255, 255, 1), bool grvt = true);
 	virtual ~Particle();
 
 	virtual void integrate(double t);

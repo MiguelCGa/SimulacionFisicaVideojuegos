@@ -5,7 +5,7 @@
 #define MIN_SIM_SPEED 7.0f
 
 std::vector<float> Projectile::projectileSpeeds = { 250.0f, 1800.0f, 330.0f, 300000.0f };
-std::vector<float> Projectile::projectileMasses = { 12.0f, 1190.0f, 0.008f, 0.001f };
+std::vector<float> Projectile::projectileMasses = { 12.0f, 1.190f, 0.008f, 0.001f };
 std::vector<Vector4> Projectile::projectileColors =	{	Vector4(255, 0, 0, 1),
 														Vector4(0, 255, 0, 1),
 														Vector4(0, 0, 255, 1),

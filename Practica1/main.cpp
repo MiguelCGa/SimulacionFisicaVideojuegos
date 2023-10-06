@@ -41,6 +41,12 @@ void shot(ProjectileType type) {
 	particles.push_back(p);
 }
 
+void cVelPart() {
+	const auto cam = GetCamera();
+	Particle* p = new Particle(cam->getTransform().p + cam->getDir() * 50.0f, 10.0f, cam->getDir().cross(Vector3(0, 0, 0)) * 10.0f, Vector4(255, 255, 255, 1), false);
+	particles.push_back(p);
+}
+
 
 // Initialize physics engine
 void initPhysics(bool interactive)
@@ -87,8 +93,6 @@ void stepPhysics(bool interactive, double t)
 // Add custom code to the begining of the function
 void cleanupPhysics(bool interactive)
 {
-	//delete myParticle;
-	//myParticle = nullptr;
 	for (auto& e : particles) {
 		delete e;
 		e = nullptr;
@@ -128,6 +132,9 @@ void keyPress(unsigned char key, const PxTransform& camera)
 		break;
 	case '4': 
 		shot(ProjectileType::LaserBeam);
+		break;
+	case '5': 
+		cVelPart();
 		break;
 	//case ' ':	break;
 	case ' ':
