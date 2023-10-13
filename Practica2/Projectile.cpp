@@ -17,7 +17,7 @@ Projectile::Projectile(Vector3 Pos, float Mass, Vector3 Vel) :
 		Pos,
 		get_simulated_mass(Mass, Vel),
 		get_simulated_velocity(Vel)) {
-	gravity = get_simulated_gravity(gravity, Vel);
+	_gravity = get_simulated_gravity(_gravity, Vel);
 }
 
 Projectile::Projectile(Vector3 Pos, Vector3 Dir, ProjectileType type) :
@@ -25,7 +25,7 @@ Projectile::Projectile(Vector3 Pos, Vector3 Dir, ProjectileType type) :
 		get_simulated_mass(projectileMasses[type], projectileSpeeds[type] * Dir),
 		get_simulated_velocity(projectileSpeeds[type] * Dir),
 		projectileColors[type]) {
-	gravity = get_simulated_gravity(gravity, projectileSpeeds[type] * Dir);
+	_gravity = get_simulated_gravity(_gravity, projectileSpeeds[type] * Dir);
 }
 
 Vector3 Projectile::get_simulated_velocity(Vector3 real_vel) const {
@@ -40,7 +40,7 @@ float Projectile::get_simulated_mass(float real_mass, Vector3 real_vel) const {
 }
 
 Vector3 Projectile::get_simulated_gravity(Vector3 real_gravity, Vector3 real_vel) const {
-	return gravity * (1.0f / get_conversion_factor(real_vel, get_simulated_velocity(real_vel)));
+	return _gravity * (1.0f / get_conversion_factor(real_vel, get_simulated_velocity(real_vel)));
 }
 
 float Projectile::get_conversion_factor(Vector3 real_vel, Vector3 sim_vel) const {
