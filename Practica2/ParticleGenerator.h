@@ -27,13 +27,22 @@ protected:
 	std::random_device rd;  // a seed source for the random number engine
 	random_generator gen; // mersenne_twister_engine seeded with rd()
 
+	std::uniform_real_distribution<> _random_probability;
+
+
+
 	template <typename T>
 	class DistributionVector3 {
 	private:
-		T x, y, z;
+		T _x, _y, _z;
 	public:
+		template <typename T_param_type>
+		DistributionVector3(T_param_type x, T_param_type y, T_param_type z) :
+			_x(x), _y(y), _z(z) {
+		}
+
 		Vector3 operator()(random_generator gen) {
-			return Vector3(x(gen), y(gen), z(gen));
+			return Vector3(_x(gen), _y(gen), _z(gen));
 		}
 	};
 };

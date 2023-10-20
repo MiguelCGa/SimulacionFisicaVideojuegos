@@ -7,6 +7,7 @@
 #include "core.hpp"
 #include "RenderUtils.hpp"
 #include "callbacks.hpp"
+#include "ParticleSystem.h"
 #include "Projectile.h"
 
 #include <iostream>
@@ -31,10 +32,8 @@ PxDefaultCpuDispatcher*	gDispatcher = NULL;
 PxScene*				gScene      = NULL;
 ContactReportCallback gContactReportCallback;
 
-Projectile* myParticle = nullptr;
-
-std::vector<Particle*> particles;
-
+std::vector<ParticleSystem*> myParticleSystems;
+/*
 void shot(ProjectileType type) {
 	const auto cam = GetCamera();
 	Projectile* p = new Projectile(cam->getTransform().p, cam->getDir(), type);
@@ -45,7 +44,7 @@ void cVelPart() {
 	const auto cam = GetCamera();
 	Particle* p = new Particle(cam->getTransform().p + cam->getDir() * 50.0f, 10.0f, cam->getDir().cross(Vector3(0, 0, 0)) * 10.0f, Vector4(255, 255, 255, 1), false);
 	particles.push_back(p);
-}
+}*/
 
 
 // Initialize physics engine
@@ -71,6 +70,9 @@ void initPhysics(bool interactive)
 	sceneDesc.filterShader = contactReportFilterShader;
 	sceneDesc.simulationEventCallback = &gContactReportCallback;
 	gScene = gPhysics->createScene(sceneDesc);
+
+
+	myParticleSystems.push_back(new ParticleSystem());
 }
 
 
@@ -84,7 +86,7 @@ void stepPhysics(bool interactive, double t)
 	gScene->simulate(t);
 	gScene->fetchResults(true);
 
-	for (auto& e : particles) {
+	for (auto& e : myParticleSystems) {
 		e->integrate(t);
 	}
 }
@@ -93,7 +95,7 @@ void stepPhysics(bool interactive, double t)
 // Add custom code to the begining of the function
 void cleanupPhysics(bool interactive)
 {
-	for (auto& e : particles) {
+	for (auto& e : myParticleSystems) {
 		delete e;
 		e = nullptr;
 	}
@@ -121,7 +123,7 @@ void keyPress(unsigned char key, const PxTransform& camera)
 
 	switch(toupper(key))
 	{
-	case '1': 
+	/*/case '1':
 		shot(ProjectileType::CannonBall);
 		break;
 	case '2': 
@@ -135,7 +137,7 @@ void keyPress(unsigned char key, const PxTransform& camera)
 		break;
 	case '5': 
 		cVelPart();
-		break;
+		break;*/
 	//case ' ':	break;
 	case ' ':
 	{

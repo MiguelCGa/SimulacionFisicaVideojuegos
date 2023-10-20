@@ -1,25 +1,20 @@
 #pragma once
 
-#include "RenderUtils.hpp"
 #include <list>
+
+#include "RenderUtils.hpp"
 #include "ParticleGenerator.h"
-
-
 
 class UniformParticleGenerator : public ParticleGenerator {
 private:
-	class UniformDistributionVector3 {
-	private:
-		std::uniform_int_distribution<> x, y, z;
-
+	using myDist = std::uniform_int_distribution<>;
+	class UniformDistributionVector3 : public ParticleGenerator::DistributionVector3<myDist> {
 	public:
 		UniformDistributionVector3(Vector3 const& mean, Vector3 const& width) :
-			x(mean.x - width.x, mean.x + width.x),
-			y(mean.y - width.y, mean.y + width.y),
-			z(mean.z - width.z, mean.z + width.z) {
-		}
-		Vector3 operator()(random_generator gen) {
-			return Vector3(x(gen), y(gen), z(gen));
+			DistributionVector3(
+				myDist::param_type(mean.x - width.x, mean.x + width.x),
+				myDist::param_type(mean.y - width.y, mean.y + width.y),
+				myDist::param_type(mean.z - width.z, mean.z + width.z)) {
 		}
 	};
 
