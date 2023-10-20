@@ -36,6 +36,8 @@ void ParticleSystem::integrate(double t) {
 			++it;
 		}
 		else {
+			delete (*it);
+			(*it) = nullptr;
 			it = _particles.erase(it);
 		}
 	}
