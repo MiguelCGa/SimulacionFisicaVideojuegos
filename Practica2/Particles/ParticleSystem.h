@@ -1,9 +1,9 @@
 #pragma once
 
 #include <list>
-#include "RenderUtils.hpp"
-#include "UniformParticleGenerator.h"
-#include "GaussianParticleGenerator.h"
+#include "Generators/UniformParticleGenerator.h"
+#include "Generators/GaussianParticleGenerator.h"
+#include "Types/Firework.h"
 
 class ParticleSystem {
 public:

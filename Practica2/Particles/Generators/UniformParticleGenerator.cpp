@@ -1,6 +1,3 @@
-#include "ParticleGenerator.h"
-#include "constants.h"
-#include <iostream>
 #include "UniformParticleGenerator.h"
 
 UniformParticleGenerator::UniformParticleGenerator(std::string name, Vector3 pos, Vector3 vel, double generation_prob, Vector3 pos_width, Vector3 vel_width) :
@@ -10,7 +7,7 @@ UniformParticleGenerator::UniformParticleGenerator(std::string name, Vector3 pos
 
 }
 
-std::list<Particle*> UniformParticleGenerator::generateParticles() {
+std::list<Particle*>& UniformParticleGenerator::generateParticles() {
 	std::list<Particle*> particles;
 	if (_random_probability(gen) < _generation_probability)
 		particles.push_back(_model->clone(_pos_distribution(gen), _vel_distribution(gen)));

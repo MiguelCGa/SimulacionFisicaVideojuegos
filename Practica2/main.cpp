@@ -7,8 +7,7 @@
 #include "core.hpp"
 #include "RenderUtils.hpp"
 #include "callbacks.hpp"
-#include "ParticleSystem.h"
-#include "Projectile.h"
+#include "Particles/ParticleSystem.h"
 
 #include <iostream>
 
@@ -33,18 +32,6 @@ PxScene*				gScene      = NULL;
 ContactReportCallback gContactReportCallback;
 
 std::vector<ParticleSystem*> myParticleSystems;
-/*
-void shot(ProjectileType type) {
-	const auto cam = GetCamera();
-	Projectile* p = new Projectile(cam->getTransform().p, cam->getDir(), type);
-	particles.push_back(p);
-}
-
-void cVelPart() {
-	const auto cam = GetCamera();
-	Particle* p = new Particle(cam->getTransform().p + cam->getDir() * 50.0f, 10.0f, cam->getDir().cross(Vector3(0, 0, 0)) * 10.0f, Vector4(255, 255, 255, 1), false);
-	particles.push_back(p);
-}*/
 
 
 // Initialize physics engine
@@ -123,26 +110,8 @@ void keyPress(unsigned char key, const PxTransform& camera)
 
 	switch(toupper(key))
 	{
-	/*/case '1':
-		shot(ProjectileType::CannonBall);
-		break;
-	case '2': 
-		shot(ProjectileType::TankBullet);
-		break;
-	case '3': 
-		shot(ProjectileType::Bullet);
-		break;
-	case '4': 
-		shot(ProjectileType::LaserBeam);
-		break;
-	case '5': 
-		cVelPart();
-		break;*/
-	//case ' ':	break;
 	case ' ':
-	{
 		break;
-	}
 	default:
 		break;
 	}

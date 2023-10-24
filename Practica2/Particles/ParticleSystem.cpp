@@ -1,5 +1,4 @@
 #include "ParticleSystem.h"
-#include "constants.h"
 #include <iostream>
 
 ParticleSystem::ParticleSystem() {
@@ -31,11 +30,11 @@ void ParticleSystem::integrate(double t) {
 	}
 
 	for (auto it = _particles.begin(); it != _particles.end(); ) {
-		if ((*it)->isAlive()) {
-			(*it)->integrate(t);
+		if ((*it)->integrate(t)) {
 			++it;
 		}
 		else {
+			(*it)->kill();
 			delete (*it);
 			(*it) = nullptr;
 			it = _particles.erase(it);

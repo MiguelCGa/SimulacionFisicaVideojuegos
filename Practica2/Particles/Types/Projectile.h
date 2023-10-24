@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Particle.h"
+#include "../Particle.h"
 
 enum ProjectileType { CannonBall, TankBullet, Bullet, LaserBeam };
 
