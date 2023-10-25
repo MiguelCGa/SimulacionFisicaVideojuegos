@@ -11,6 +11,12 @@ ParticleSystem::ParticleSystem() {
 	gen = new GaussianParticleGenerator("Gen2", Vector3(0, 0, 0), Vector3(0, 0, 0), 0.1, Vector3(100, 1, 1), Vector3(1, 1, 1));
 	gen->setParticle(new Particle(Vector3(0, 0, 0), 1));
 	_particle_generators.push_back(gen);
+
+	Firework* f = new Firework(Vector3(0, 30, 0), 10.0f, Vector3(0, 70, 0), Vector4(255, 0, 0, 1));
+	f->setOnDeath([&](Particle* p) {
+		_particles.splice(_particles.end(), static_cast<Firework*>(p)->explode());
+	});
+	_particles.push_back(f);
 }
 
 ParticleSystem::~ParticleSystem() {

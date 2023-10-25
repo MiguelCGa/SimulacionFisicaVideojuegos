@@ -8,7 +8,7 @@
 
 class Firework : public Particle {
 public:
-	Firework(Vector3 Pos, float Mass, Vector3 Vel = Vector3(0, 0, 0), Vector4 Color = Vector4(255, 255, 255, 1), Vector3 gravity = values::gravity, float damping = values::damping, double life_time = values::std_life_time);
+	Firework(Vector3 Pos, float Mass, Vector3 Vel = Vector3(0, 0, 0), Vector4 Color = genColors[Gen1], Vector3 gravity = values::gravity, float damping = values::damping, double life_time = values::std_life_time);
 	
 	std::list<Particle*> explode();
 protected:
@@ -19,5 +19,7 @@ protected:
 	FireworkGeneration _myGen;
 
 	NormalDistributionVector3 _vel_distribution;
+
+	static std::vector<Vector4> genColors;
 };
 

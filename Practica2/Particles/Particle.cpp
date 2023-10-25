@@ -45,5 +45,5 @@ void Particle::setOnDeath(std::function<void(Particle*)> onDeath) {
 }
 
 void Particle::kill() {
-	if (_onDeath) _onDeath(this);
+	if (_onDeath != nullptr) _onDeath(this);
 }
