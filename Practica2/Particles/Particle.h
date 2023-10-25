@@ -12,11 +12,9 @@ public:
 	virtual bool integrate(double t);
 	bool isAlive() const;
 
-	virtual Particle* clone(Vector3 pos_offset, Vector3 vel_offset) const;
+	virtual Particle* clone(Vector3 pos_offset, Vector3 vel_offset, double _life_time = values::std_life_time) const;
 
-	void setOnDeath(std::function<void(Particle*)> onDeath);
-
-	void kill();
+	virtual void kill();
 
 protected:
 	float mass, inverse_mass;
@@ -27,7 +25,5 @@ protected:
 	RenderItem* renderItem;
 
 	double _initial_life_time, _life_time;
-
-	std::function<void(Particle*)> _onDeath;
 };
 

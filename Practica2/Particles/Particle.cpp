@@ -1,4 +1,5 @@
 #include "Particle.h"
+#include "../Random/random.h"
 
 Particle::Particle(Vector3 Pos, float Mass, Vector3 Vel, Vector4 Color, Vector3 gravity, float damping, double life_time) :
 	mass(Mass),
@@ -9,9 +10,8 @@ Particle::Particle(Vector3 Pos, float Mass, Vector3 Vel, Vector4 Color, Vector3 
 	_accel(Vector3(0, 0, 0)),
 	_gravity(gravity),
 	_initial_life_time(life_time),
-	_life_time(life_time),
-	renderItem(new RenderItem(CreateShape(physx::PxSphereGeometry(1)), &pose, Color)),
-	_onDeath(nullptr) {
+	_life_time(std::uniform_real_distribution<>(life_time - life_time/10.0, life_time + life_time / 10.0)(gen())),
+	renderItem(new RenderItem(CreateShape(physx::PxSphereGeometry(1)), &pose, Color)) {
 }
 
 Particle::~Particle() {
@@ -36,14 +36,10 @@ bool Particle::isAlive() const {
 	return _life_time > 0.0;
 }
 
-Particle* Particle::clone(Vector3 pos_offset, Vector3 vel_offset) const {
-	return new Particle(pose.p + pos_offset, mass, _vel + vel_offset, renderItem->color, _gravity, _damping, _initial_life_time);
-}
-
-void Particle::setOnDeath(std::function<void(Particle*)> onDeath) {
-	_onDeath = onDeath;
+Particle* Particle::clone(Vector3 pos_offset, Vector3 vel_offset, double _life_time) const {
+	return new Particle(pose.p + pos_offset, mass, _vel + vel_offset, renderItem->color, _gravity, _damping, _life_time);
 }
 
 void Particle::kill() {
-	if (_onDeath != nullptr) _onDeath(this);
+
 }

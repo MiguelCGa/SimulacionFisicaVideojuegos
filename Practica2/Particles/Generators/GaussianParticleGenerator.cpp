@@ -6,13 +6,14 @@ GaussianParticleGenerator::GaussianParticleGenerator(std::string name, Vector3 p
 	std_dev_vel(dev_vel),
 	std_dev_t(1.0),
 	_pos_distribution(pos, dev_pos),
-	_vel_distribution(vel, dev_vel)	{
+	_vel_distribution(vel, dev_vel),
+	_life_time_distribution(values::std_life_time, std_dev_t) {
 }
 
 std::list<Particle*> GaussianParticleGenerator::generateParticles() {
 	std::list<Particle*> particles;
 	for (int i = 0; i < _max_iteration_particles; ++i)
 		if (_random_probability(gen()) < _generation_probability)
-			particles.push_back(_model->clone(_pos_distribution(gen()), _vel_distribution(gen())));
+			particles.push_back(_model->clone(_pos_distribution(gen()), _vel_distribution(gen()), _life_time_distribution(gen())));
 	return particles;
 }

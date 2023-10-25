@@ -15,5 +15,6 @@ protected:
 
 	NormalDistributionVector3 _pos_distribution;
 	NormalDistributionVector3 _vel_distribution;
+	std::normal_distribution<> _life_time_distribution;
 };
 
