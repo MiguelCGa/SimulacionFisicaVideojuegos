@@ -9,7 +9,7 @@ private:
 public:
 	UniformParticleGenerator(std::string name, Vector3 pos, Vector3 vel, double generation_prob, Vector3 pos_width, Vector3 vel_width);
 
-	std::list<Particle*>& generateParticles() override;
+	std::list<Particle*> generateParticles() override;
 
 protected:
 	Vector3 _vel_width, _pos_width;

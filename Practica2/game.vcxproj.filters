@@ -37,6 +37,9 @@
     <ClCompile Include="Random\UniformDistributionVector3.cpp">
       <Filter>Random</Filter>
     </ClCompile>
+    <ClCompile Include="Random\random.cpp">
+      <Filter>Random</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />

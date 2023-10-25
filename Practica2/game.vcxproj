@@ -263,6 +263,7 @@
     <ClCompile Include="Particles\Types\Firework.cpp" />
     <ClCompile Include="Particles\Types\Projectile.cpp" />
     <ClCompile Include="Random\NormalDistributionVector3.cpp" />
+    <ClCompile Include="Random\random.cpp" />
     <ClCompile Include="Random\UniformDistributionVector3.cpp" />
     <ClCompile Include="RenderUtils.cpp" />
     <ClCompile Include="Render\Camera.cpp" />

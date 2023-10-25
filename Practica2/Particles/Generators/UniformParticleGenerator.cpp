@@ -7,9 +7,10 @@ UniformParticleGenerator::UniformParticleGenerator(std::string name, Vector3 pos
 
 }
 
-std::list<Particle*>& UniformParticleGenerator::generateParticles() {
+std::list<Particle*> UniformParticleGenerator::generateParticles() {
 	std::list<Particle*> particles;
-	if (_random_probability(gen()) < _generation_probability)
-		particles.push_back(_model->clone(_pos_distribution(gen()), _vel_distribution(gen())));
+	for (int i = 0; i < _max_iteration_particles; ++i)
+		if (_random_probability(gen()) < _generation_probability)
+			particles.push_back(_model->clone(_pos_distribution(gen()), _vel_distribution(gen())));
 	return particles;
 }

@@ -13,7 +13,7 @@ public:
 		_x(x), _y(y), _z(z) {
 	}
 
-	Vector3 operator()(random_generator gen) {
+	Vector3 operator()(random_generator& gen) {
 		return Vector3(_x(gen), _y(gen), _z(gen));
 	}
 };

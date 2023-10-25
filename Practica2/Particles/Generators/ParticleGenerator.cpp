@@ -5,7 +5,7 @@ ParticleGenerator::ParticleGenerator(std::string name, Vector3 mean_pos, Vector3
 	_mean_pos(mean_pos),
 	_mean_vel(mean_vel), 
 	_generation_probability(generation_prob),
-	_num_particles(0),
+	_max_iteration_particles(3),
 	_model(nullptr),
 	_random_probability(0.0, 1.0) {
 }
