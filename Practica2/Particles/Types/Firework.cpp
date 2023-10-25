@@ -18,7 +18,7 @@ std::list<Particle*>& Firework::explode() {
 }
 
 Firework* Firework::clone() {
-	Firework* newGen = new Firework(pose.p, mass, _vel + _vel_distribution(random::gen), renderItem->color, _gravity, _damping, _initial_life_time);
+	Firework* newGen = new Firework(pose.p, mass, _vel + _vel_distribution(random::gen()), renderItem->color, _gravity, _damping, _initial_life_time);
 	newGen->_myGen = static_cast<FireworkGeneration>(_myGen + 1);
 	newGen->setOnDeath(_onDeath);
 	return newGen;
