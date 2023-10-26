@@ -10,9 +10,8 @@ public:
 	ParticleSystem();
 	virtual ~ParticleSystem();
 
+	// Updates the system
 	virtual void integrate(double t);
-	ParticleGenerator* getParticleGenerator(std::string name);
-	void generateFireworkSystem();
 
 protected:
 	std::list<Particle*> _particles;

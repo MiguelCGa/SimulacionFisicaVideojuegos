@@ -3,6 +3,10 @@
 #include "random.h"
 #include "../core.hpp"
 
+/*
+* Class which encapsulates 3 random distribution generators
+* to use it as a distribution of the Vector3 type.
+*/
 template <typename T>
 class DistributionVector3 {
 private:

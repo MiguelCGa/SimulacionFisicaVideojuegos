@@ -4,16 +4,32 @@
 ParticleSystem::ParticleSystem() {
 	
 	ParticleGenerator* gen;
-	//gen = new UniformParticleGenerator("Gen1", Vector3(0, 0, 0), Vector3(0, 50, 0), 0.1, Vector3(3, 3, 3), Vector3(25, 1, 25));
-	//gen->setParticle(new Particle(Vector3(0, 0, 0), 1));
-	//_particle_generators.push_back(gen);
-	
-	gen = new GaussianParticleGenerator("Gen2", Vector3(0, 0, 0), Vector3(0, 0, 0), 0.1, Vector3(100, 1, 1), Vector3(1, 1, 1));
-	gen->setParticle(new Particle(Vector3(0, 0, 0), 1));
-	_particle_generators.push_back(gen);
 
-	Firework* f = new Firework(_particles, Vector3(0, 30, 0), 10.0f, Vector3(0, 70, 0), Vector4(255, 0, 0, 1), values::gravity, values::damping, 3.0);
-	_particles.push_back(f);
+	// Uniform Particle Generator:
+
+	/*gen = new UniformParticleGenerator("Gen1", Vector3(0, 0, 0), Vector3(0, 50, 0), 0.1, Vector3(3, 3, 3), Vector3(25, 1, 25));
+	gen->setParticle(new Particle(Vector3(0, 0, 0), 1));
+	_particle_generators.push_back(gen);*/
+
+
+	// Gaussian Particle Generator:
+
+	/*gen = new GaussianParticleGenerator("Gen2", 0.05, Vector3(0, 0, 0), Vector3(0, 10, 0), Vector3(100, 1, 1), Vector3(1, 10, 1));
+	gen->setParticle(new Particle(Vector3(0, 0, 0), 1));
+	_particle_generators.push_back(gen);*/
+
+	// Uniform Firework Generator:
+
+	//gen = new UniformParticleGenerator("Gen1", Vector3(0, 0, 0), Vector3(0, 50, 0), 0.1, Vector3(3, 3, 3), Vector3(25, 1, 25));
+	//gen->setParticle(new Firework(_particles, Vector3(50, -80, 0), 10.0f, Vector3(0, 40, 0), Vector4(255, 0, 0, 1), values::gravity, values::damping, 3.0));
+	//_particle_generators.push_back(gen);
+
+	// Gaussian Firework Generator:
+
+	//gen = new GaussianParticleGenerator("Gen2", 0.05, Vector3(0, 0, 0), Vector3(0, 0, 25), Vector3(100, 1, 1), Vector3(1, 1, 1));
+	//gen->setParticle(new Firework(_particles, Vector3(50, -80, 0), 10.0f, Vector3(0, 70, 0), Vector4(255, 0, 0, 1), values::gravity, values::damping, 3.0));
+	//_particle_generators.push_back(gen);
+
 }
 
 ParticleSystem::~ParticleSystem() {
