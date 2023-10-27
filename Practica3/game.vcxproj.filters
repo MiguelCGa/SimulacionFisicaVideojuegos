@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Render\Camera.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\Render.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderUtils.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="callbacks.cpp" />
+    <ClCompile Include="Particles\Particle.cpp">
+      <Filter>Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Particles\ParticleSystem.cpp">
+      <Filter>Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Particles\Types\Firework.cpp">
+      <Filter>Particles\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Particles\Types\Projectile.cpp">
+      <Filter>Particles\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Particles\Generators\GaussianParticleGenerator.cpp">
+      <Filter>Particles\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Particles\Generators\ParticleGenerator.cpp">
+      <Filter>Particles\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Particles\Generators\UniformParticleGenerator.cpp">
+      <Filter>Particles\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Random\NormalDistributionVector3.cpp">
+      <Filter>Random</Filter>
+    </ClCompile>
+    <ClCompile Include="Random\UniformDistributionVector3.cpp">
+      <Filter>Random</Filter>
+    </ClCompile>
+    <ClCompile Include="Random\random.cpp">
+      <Filter>Random</Filter>
+    </ClCompile>
+    <ClCompile Include="Forces\ForceGenerator.cpp">
+      <Filter>Forces</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="core.hpp" />
+    <ClInclude Include="Render\Camera.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\Render.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderUtils.hpp" />
+    <ClInclude Include="callbacks.hpp" />
+    <ClInclude Include="constants.h" />
+    <ClInclude Include="Particles\Particle.h">
+      <Filter>Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Particles\ParticleSystem.h">
+      <Filter>Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Particles\Types\Firework.h">
+      <Filter>Particles\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Particles\Types\Projectile.h">
+      <Filter>Particles\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Particles\Generators\GaussianParticleGenerator.h">
+      <Filter>Particles\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Particles\Generators\ParticleGenerator.h">
+      <Filter>Particles\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Particles\Generators\UniformParticleGenerator.h">
+      <Filter>Particles\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Random\DistributionVector3.h">
+      <Filter>Random</Filter>
+    </ClInclude>
+    <ClInclude Include="Random\NormalDistributionVector3.h">
+      <Filter>Random</Filter>
+    </ClInclude>
+    <ClInclude Include="Random\random.h">
+      <Filter>Random</Filter>
+    </ClInclude>
+    <ClInclude Include="Random\UniformDistributionVector3.h">
+      <Filter>Random</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\ForceGenerator.h">
+      <Filter>Forces</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Render">
+      <UniqueIdentifier>{d04b4f9f-5a69-465e-8070-25c6d0bcd3c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Particles">
+      <UniqueIdentifier>{182c48d8-9323-458f-bea2-76b7ab18e5b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Particles\Generators">
+      <UniqueIdentifier>{2aec283b-70cf-47c0-9001-5ab06faca3ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Particles\Types">
+      <UniqueIdentifier>{6f556522-3ddc-4f58-b1af-721deff0f62a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Random">
+      <UniqueIdentifier>{63071802-00c4-4fe8-8767-37e5829c9146}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Forces">
+      <UniqueIdentifier>{0c29ddf9-c7b3-4785-9cfd-9dd0bd26a5d3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
