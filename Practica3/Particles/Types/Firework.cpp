@@ -1,5 +1,9 @@
 #include "Firework.h"
 
+std::vector<Firework> Firework::fireworkPool = {
+
+};
+
 std::vector<Vector4> Firework::genColors = {
 	Vector4(255, 0 , 0, 1),
 	Vector4(0, 255 , 0, 1),

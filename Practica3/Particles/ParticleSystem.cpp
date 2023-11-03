@@ -48,15 +48,15 @@ void ParticleSystem::integrate(double t) {
 		_particles.splice(_particles.end(), gen->generateParticles());
 	}
 
-	for (auto it = _particles.begin(); it != _particles.end(); ) {
-		if ((*it)->integrate(t)) {
-			++it;
+	for (auto part_it = _particles.begin(); part_it != _particles.end(); ) {
+		if ((*part_it)->integrate(t)) {
+			++part_it;
 		}
 		else {
-			(*it)->kill();
-			delete (*it);
-			(*it) = nullptr;
-			it = _particles.erase(it);
+			(*part_it)->kill();
+			delete (*part_it);
+			(*part_it) = nullptr;
+			part_it = _particles.erase(part_it);
 		}
 	}
 }

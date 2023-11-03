@@ -1,7 +1,7 @@
 #include "Particle.h"
 #include "../Random/random.h"
 
-Particle::Particle(Vector3 Pos, float Mass, Vector3 Vel, Vector4 Color, Vector3 gravity, float damping, double life_time) :
+Particle::Particle(Vector3 Pos, float Mass, Vector3 Vel, Vector4 Color, Vector3 gravity, float damping, double life_time, Vector3 pos_max_offset) :
 	_mass(Mass),
 	_inverse_mass((Mass <= 0.0f) ? 0.0f : 1.0f / Mass),
 	_damping(damping),

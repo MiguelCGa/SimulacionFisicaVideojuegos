@@ -29,5 +29,7 @@ protected:
 	NormalDistributionVector3 _vel_distribution;
 
 	static std::vector<Vector4> genColors;
+
+	static std::vector<Firework> fireworkPool;
 };
 

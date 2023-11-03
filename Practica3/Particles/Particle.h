@@ -5,7 +5,7 @@
 
 class Particle {
 public:
-	Particle(Vector3 Pos, float Mass, Vector3 Vel = Vector3(0.0f), Vector4 Color = Vector4(255, 255, 255, 1), Vector3 gravity = values::gravity, float damping = values::damping, double life_time = values::std_life_time);
+	Particle(Vector3 Pos, float Mass, Vector3 Vel = Vector3(0.0f), Vector4 Color = Vector4(255, 255, 255, 1), Vector3 gravity = values::gravity, float damping = values::damping, double life_time = values::std_life_time, Vector3 pos_max_offset = values::particle_pos_max_offset);
 	virtual ~Particle();
 
 	// Updates the particle. Returns whether the particle is alive
@@ -40,5 +40,6 @@ protected:
 	RenderItem* renderItem;
 	// Life time
 	double _initial_life_time, _life_time;
+	Vector3 _pos_max_offset;
 };
 
