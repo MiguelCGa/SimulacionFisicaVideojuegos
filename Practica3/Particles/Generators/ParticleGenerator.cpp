@@ -1,6 +1,6 @@
 #include "ParticleGenerator.h"
 
-ParticleGenerator::ParticleGenerator(std::string name, Vector3 mean_pos, Vector3 mean_vel, double generation_prob) : 
+ParticleGenerator::ParticleGenerator(std::string name, double generation_prob, Vector3 mean_pos, Vector3 mean_vel) :
 	_name(name), 
 	_mean_pos(mean_pos),
 	_mean_vel(mean_vel), 

@@ -29,7 +29,7 @@ bool Particle::integrate(double t) {
 	}
 
 	_accel = _force * _inverse_mass;
-	_vel += (_accel + _gravity) * t;
+	_vel += (_accel/* + _gravity*/) * t;
 	_vel *= powf(_damping, t);
 	pose.p += _vel * t;
 

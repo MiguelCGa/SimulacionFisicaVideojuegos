@@ -7,7 +7,7 @@
 
 class ParticleGenerator {
 public:
-	ParticleGenerator(std::string name, Vector3 pos, Vector3 vel, double generation_prob);
+	ParticleGenerator(std::string name, double generation_prob, Vector3 pos, Vector3 vel);
 	virtual ~ParticleGenerator();
 
 	// Sets the particle to follow as the model

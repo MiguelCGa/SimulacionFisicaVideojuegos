@@ -49,6 +49,9 @@
     <ClCompile Include="Forces\ForceGenerators\GravityForceGenerator.cpp">
       <Filter>Forces\ForceGenerators</Filter>
     </ClCompile>
+    <ClCompile Include="Utils\BoundingBox.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -103,6 +106,9 @@
     <ClInclude Include="Forces\ForceGenerators\GravityForceGenerator.h">
       <Filter>Forces\ForceGenerators</Filter>
     </ClInclude>
+    <ClInclude Include="Utils\BoundingBox.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
@@ -125,6 +131,9 @@
     </Filter>
     <Filter Include="Forces\ForceGenerators">
       <UniqueIdentifier>{02878075-4aed-4965-a9f4-3cf862620bb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{222a447f-aec0-4684-97f9-46fa86d3450c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

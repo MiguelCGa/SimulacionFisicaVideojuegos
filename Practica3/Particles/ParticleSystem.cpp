@@ -1,7 +1,8 @@
 #include "ParticleSystem.h"
 #include <iostream>
 
-ParticleSystem::ParticleSystem() {
+ParticleSystem::ParticleSystem() :
+	gFG(Vector3(0, -9.8, 0)) {
 	
 	ParticleGenerator* gen;
 
@@ -44,12 +45,22 @@ ParticleSystem::~ParticleSystem() {
 }
 
 void ParticleSystem::integrate(double t) {
-	// Particle generation
-	for (auto const& gen : _particle_generators) {
-		_particles.splice(_particles.end(), gen->generateParticles());
-	}
+	generateParticles();
+	updateForces(t);
+	updateParticles(t);
+}
 
-	// Force update
+void ParticleSystem::generateParticles() {
+	for (auto const& gen : _particle_generators) {
+		auto nGen = gen->generateParticles();
+		for (auto& p : nGen) {
+			_particle_force_registry.addRegistry(p, &gFG);
+		}
+		_particles.splice(_particles.end(), nGen);
+	}
+}
+
+void ParticleSystem::updateForces(double t) {
 	_particle_force_registry.updateForces(t);
 	for (auto force_it = _force_generators.begin(); force_it != _force_generators.end(); ) {
 		// Non-alive forces get erased on the next iteration so registry works well
@@ -60,16 +71,18 @@ void ParticleSystem::integrate(double t) {
 		}
 		else {
 			(*force_it)->updateTime(t);
-			 ++force_it;
+			++force_it;
 		}
 	}
+}
 
-	// Particle update
+void ParticleSystem::updateParticles(double t) {
 	for (auto part_it = _particles.begin(); part_it != _particles.end(); ) {
 		if ((*part_it)->integrate(t)) {
 			++part_it;
 		}
 		else {
+			_particle_force_registry.deleteParticleRegistry(*part_it);
 			(*part_it)->kill();
 			delete (*part_it);
 			(*part_it) = nullptr;
