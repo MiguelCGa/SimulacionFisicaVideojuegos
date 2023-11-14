@@ -4,14 +4,14 @@
 
 class ForceGenerator {
 public:
-	ForceGenerator();
+	ForceGenerator(double duration);
+	virtual ~ForceGenerator() {}
 
 	// Updates the force on the particle. Returns weather the force ended
 	virtual bool updateForce(Particle* particle) = 0;
 	bool updateTime(double t);
-	bool isAlive() const;
+	bool isAlive() const noexcept;
 protected:
-	double _t;
-	double _duration;
+	double _duration, _t;
 };
 

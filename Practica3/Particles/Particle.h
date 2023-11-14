@@ -2,16 +2,19 @@
 
 #include "../RenderUtils.hpp"
 #include "../constants.h"
+#include "../Utils/BoundingBox.h"
 
 class Particle {
 public:
-	Particle(Vector3 Pos, float Mass, Vector3 Vel = Vector3(0.0f), Vector4 Color = Vector4(255, 255, 255, 1), Vector3 gravity = values::gravity, float damping = values::damping, double life_time = values::std_life_time, Vector3 pos_max_offset = values::particle_pos_max_offset);
+	Particle(Vector3 Pos, float Mass, Vector3 Vel = Vector3(0.0f), Vector4 Color = Vector4(255, 255, 255, 1), Vector3 gravity = values::gravity, float damping = values::damping, double life_time = values::std_life_time, BoundingBox pos_limits = BoundingBox());
 	virtual ~Particle();
 
 	// Updates the particle. Returns whether the particle is alive
 	virtual bool integrate(double t);
 	// Returns whether the life time left is above 0
-	bool isAlive() const;
+	bool isAlive() const noexcept;
+
+	float getMass() const noexcept;
 
 	void addForce(Vector3 const& newForce);
 	void clearForce();
@@ -27,6 +30,7 @@ public:
 	virtual void kill();
 	// Returns the life time passed randomized in a 20%
 	double randomize_life_time(double life_time);
+
 protected:
 	// Mass
 	float _mass, _inverse_mass;
@@ -40,6 +44,6 @@ protected:
 	RenderItem* renderItem;
 	// Life time
 	double _initial_life_time, _life_time;
-	Vector3 _pos_max_offset;
+	BoundingBox _pos_limits;
 };
 

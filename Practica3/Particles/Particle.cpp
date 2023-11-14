@@ -1,7 +1,7 @@
 #include "Particle.h"
 #include "../Random/random.h"
 
-Particle::Particle(Vector3 Pos, float Mass, Vector3 Vel, Vector4 Color, Vector3 gravity, float damping, double life_time, Vector3 pos_max_offset) :
+Particle::Particle(Vector3 Pos, float Mass, Vector3 Vel, Vector4 Color, Vector3 gravity, float damping, double life_time, BoundingBox pos_limits) :
 	_mass(Mass),
 	_inverse_mass((Mass <= 0.0f) ? 0.0f : 1.0f / Mass),
 	_damping(damping),
@@ -12,6 +12,7 @@ Particle::Particle(Vector3 Pos, float Mass, Vector3 Vel, Vector4 Color, Vector3 
 	_force(0.0f),
 	_initial_life_time(life_time),
 	_life_time(randomize_life_time(life_time)),
+	_pos_limits(pos_limits),
 	renderItem(new RenderItem(CreateShape(physx::PxSphereGeometry(1)), &pose, Color)) {
 }
 
@@ -22,7 +23,10 @@ Particle::~Particle() {
 
 bool Particle::integrate(double t) {
 
-	if (_inverse_mass <= 0.0f) return isAlive();
+	if (_inverse_mass <= 0.0f) { 
+		clearForce();
+		return isAlive();
+	}
 
 	_accel = _force * _inverse_mass;
 	_vel += (_accel + _gravity) * t;
@@ -36,12 +40,16 @@ bool Particle::integrate(double t) {
 	return isAlive();
 }
 
-bool Particle::isAlive() const {
-	return _life_time > 0.0;
+bool Particle::isAlive() const noexcept {
+	return _life_time > 0.0  && _pos_limits.contains(pose.p);
+}
+
+float Particle::getMass() const noexcept {
+	return _mass;
 }
 
 Particle* Particle::clone() const {
-	return new Particle(pose.p, _mass, _vel, renderItem->color, _gravity, _damping, _initial_life_time);
+	return new Particle(pose.p, _mass, _vel, renderItem->color, _gravity, _damping, _initial_life_time, _pos_limits);
 }
 
 void Particle::initialize(Vector3 pos_offset, Vector3 vel_offset, double life_time) {
