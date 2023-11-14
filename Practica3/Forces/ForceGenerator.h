@@ -6,9 +6,10 @@ class ForceGenerator {
 public:
 	ForceGenerator();
 
-	// Updates the particle. Returns whether the particle is alive
-	virtual void updateForce(Particle* particle, double t) = 0;
+	// Updates the force on the particle. Returns weather the force ended
+	virtual bool updateForce(Particle* particle) = 0;
 	bool updateTime(double t);
+	bool isAlive() const;
 protected:
 	double _t;
 	double _duration;

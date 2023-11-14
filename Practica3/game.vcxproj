@@ -255,6 +255,7 @@
   <ItemGroup>
     <ClCompile Include="callbacks.cpp" />
     <ClCompile Include="Forces\ForceGenerator.cpp" />
+    <ClCompile Include="Forces\ParticleForceRegistry.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Particles\Generators\GaussianParticleGenerator.cpp" />
     <ClCompile Include="Particles\Generators\ParticleGenerator.cpp" />
@@ -275,6 +276,7 @@
     <ClInclude Include="constants.h" />
     <ClInclude Include="core.hpp" />
     <ClInclude Include="Forces\ForceGenerator.h" />
+    <ClInclude Include="Forces\ParticleForceRegistry.h" />
     <ClInclude Include="Particles\Generators\GaussianParticleGenerator.h" />
     <ClInclude Include="Particles\Generators\ParticleGenerator.h" />
     <ClInclude Include="Particles\Generators\UniformParticleGenerator.h" />

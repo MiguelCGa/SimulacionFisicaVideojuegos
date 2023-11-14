@@ -43,6 +43,7 @@
     <ClCompile Include="Forces\ForceGenerator.cpp">
       <Filter>Forces</Filter>
     </ClCompile>
+    <ClCompile Include="Forces\ParticleForceRegistry.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -91,6 +92,7 @@
     <ClInclude Include="Forces\ForceGenerator.h">
       <Filter>Forces</Filter>
     </ClInclude>
+    <ClInclude Include="Forces\ParticleForceRegistry.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
