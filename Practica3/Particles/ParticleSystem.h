@@ -5,7 +5,8 @@
 #include "Generators/GaussianParticleGenerator.h"
 #include "Types/Firework.h"
 #include "../Forces/ParticleForceRegistry.h"
-#include "../Forces/ForceGenerators/GravityForceGenerator.h"
+#include "../Forces/Generators/GravityForceGenerator.h"
+#include "../Forces/Generators/WhirlwindForceGenerator.h"
 
 class ParticleSystem {
 public:
@@ -24,7 +25,5 @@ protected:
 	std::list<ParticleGenerator*> _particle_generators;
 	ParticleForceRegistry _particle_force_registry;
 	std::list<ForceGenerator*> _force_generators;
-
-	GravityForceGenerator gFG;
 };
 

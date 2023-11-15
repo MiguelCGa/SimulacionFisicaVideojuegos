@@ -48,6 +48,14 @@ float Particle::getMass() const noexcept {
 	return _mass;
 }
 
+Vector3 Particle::getPosition() const {
+	return pose.p;
+}
+
+Vector3 Particle::getVelocity() const {
+	return _vel;
+}
+
 Particle* Particle::clone() const {
 	return new Particle(pose.p, _mass, _vel, renderItem->color, _gravity, _damping, _initial_life_time, _pos_limits);
 }

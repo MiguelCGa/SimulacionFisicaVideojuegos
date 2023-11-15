@@ -9,7 +9,8 @@ public:
 	BoundingBox(Vector3 origin, float offset);
 
 	bool contains(Vector3 const& pos) const noexcept;
+	Vector3 getOrigin() const;
 protected:
-	Vector3 _min, _max;
+	Vector3 _min, _max, _origin;
 };
 

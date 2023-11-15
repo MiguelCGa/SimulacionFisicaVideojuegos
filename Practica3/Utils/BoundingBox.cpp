@@ -1,13 +1,15 @@
 #include "BoundingBox.h"
 
 BoundingBox::BoundingBox() : 
-	_min(1) ,
-	_max(0) {
+	_min(1),
+	_max(0),
+	_origin(0) {
 }
 
 BoundingBox::BoundingBox(Vector3 origin, Vector3 offset) :
 	_min(origin.x - offset.x, origin.y - offset.y, origin.z - offset.z),
-	_max(origin.x + offset.x, origin.y + offset.y, origin.z + offset.z) {
+	_max(origin.x + offset.x, origin.y + offset.y, origin.z + offset.z),
+	_origin(origin){
 }
 
 BoundingBox::BoundingBox(Vector3 origin, float offset) : 
@@ -25,4 +27,8 @@ bool BoundingBox::contains(Vector3 const& pos) const noexcept {
 		pos.x < _max.x &&
 		pos.y < _max.y &&
 		pos.z < _max.z);
+}
+
+Vector3 BoundingBox::getOrigin() const {
+	return _origin;
 }

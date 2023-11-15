@@ -1,8 +1,7 @@
 #include "ParticleSystem.h"
 #include <iostream>
 
-ParticleSystem::ParticleSystem() :
-	gFG(Vector3(0, -9.8, 0)) {
+ParticleSystem::ParticleSystem() {
 	
 	ParticleGenerator* gen;
 
@@ -15,9 +14,26 @@ ParticleSystem::ParticleSystem() :
 
 	// Gaussian Particle Generator:
 
-	gen = new GaussianParticleGenerator("Gen2", 1, Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(100, 1, 1), Vector3(1, 1, 1));
+
+	gen = new GaussianParticleGenerator("Gen2", 1, Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(10, 1, 10), Vector3(1, 1, 1));
 	gen->setParticle(new Particle(Vector3(0, 0, 0), 1));
 	_particle_generators.push_back(gen);
+
+	_force_generators.push_back(new GravityForceGenerator(Vector3(0, 0, 0)));
+	gen->addForce(_force_generators.back());
+	_force_generators.push_back(new WhirlwindForceGenerator(10.0f, 100.0f, 0.0f, BoundingBox(Vector3(0), 5000.0f)));
+	gen->addForce(_force_generators.back());
+	gen->initializeForces(&_particle_force_registry);
+
+
+	/*_force_generators.push_back(new GravityForceGenerator(Vector3(0, 9.8, 0)));
+
+	gen = new GaussianParticleGenerator("Gen3", 1, Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(100, 1, 1), Vector3(1, 1, 1));
+	gen->setParticle(new Particle(Vector3(0, 0, 0), 1));
+	_particle_generators.push_back(gen);
+
+	gen->addForce(_force_generators.back());
+	gen->initializeForces(&_particle_force_registry);*/
 
 	// Uniform Firework Generator:
 
@@ -38,10 +54,15 @@ ParticleSystem::~ParticleSystem() {
 		delete part; 
 		part = nullptr;
 	}
-	for (ParticleGenerator*& gen : _particle_generators) {
-		delete gen; 
-		gen = nullptr;
+	for (ParticleGenerator*& generator : _particle_generators) {
+		delete generator;
+		generator = nullptr;
 	}
+	for (ForceGenerator*& force : _force_generators) {
+		delete force; 
+		force = nullptr;
+	}
+	
 }
 
 void ParticleSystem::integrate(double t) {
@@ -52,11 +73,7 @@ void ParticleSystem::integrate(double t) {
 
 void ParticleSystem::generateParticles() {
 	for (auto const& gen : _particle_generators) {
-		auto nGen = gen->generateParticles();
-		for (auto& p : nGen) {
-			_particle_force_registry.addRegistry(p, &gFG);
-		}
-		_particles.splice(_particles.end(), nGen);
+		_particles.splice(_particles.end(), gen->generateParticles());
 	}
 }
 

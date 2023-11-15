@@ -15,6 +15,8 @@ public:
 	bool isAlive() const noexcept;
 
 	float getMass() const noexcept;
+	Vector3 getPosition() const;
+	Vector3 getVelocity() const;
 
 	void addForce(Vector3 const& newForce);
 	void clearForce();
