@@ -10,6 +10,8 @@ ExplosionForceGenerator::ExplosionForceGenerator(Vector3 const& origin, const do
 }
 
 bool ExplosionForceGenerator::updateForce(Particle* p) {
+	if (!_active) return isAlive();
+
 	const Vector3 diff(p->getPosition() - _origin);
 	const float r = diff.magnitude();
 	if (r > _expansion_speed * _t) return isAlive();

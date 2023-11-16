@@ -11,7 +11,7 @@
 
 #include <iostream>
 
-std::string display_text = "This is a test";
+std::string display_text = "1: Gravedad   2: Gravedad Negativa   3: Viento   4: Torbellino   5: Explosion";
 
 
 using namespace physx;
@@ -112,7 +112,19 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	{
 	case ' ':
 		break;
-	case 'P':
+	case '1':
+		myParticleSystems.back()->toggleForce(ParticleSystem::myForces::GRAVITY);
+		break;
+	case '2':
+		myParticleSystems.back()->toggleForce(ParticleSystem::myForces::NEG_GRAVITY);
+		break;
+	case '3':
+		myParticleSystems.back()->toggleForce(ParticleSystem::myForces::WIND);
+		break;
+	case '4':
+		myParticleSystems.back()->toggleForce(ParticleSystem::myForces::WHIRLWIND);
+		break;
+	case '5':
 		myParticleSystems.back()->explosion();
 		break;
 	default:

@@ -2,7 +2,8 @@
 
 ForceGenerator::ForceGenerator(double duration) :
 	_duration(duration),
-	_t(0.0) {
+	_t(0.0),
+	_active(true) {
 }
 
 bool ForceGenerator::updateTime(double t) {

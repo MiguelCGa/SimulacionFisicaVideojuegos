@@ -7,6 +7,7 @@ WhirlwindForceGenerator::WhirlwindForceGenerator(const float K,  const float k1,
 }
 
 bool WhirlwindForceGenerator::updateForce(Particle* p) {
+	if (!_active) return isAlive();
 	if (!_area.contains(p->getPosition())) return isAlive();
 
 	const Vector3 q = p->getPosition();

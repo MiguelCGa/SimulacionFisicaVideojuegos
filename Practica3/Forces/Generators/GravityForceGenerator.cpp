@@ -6,6 +6,7 @@ GravityForceGenerator::GravityForceGenerator(const Vector3& g) :
 }
 
 bool GravityForceGenerator::updateForce(Particle* p) {
+	if (!_active) return isAlive();
 	p->addForce(_gravity * p->getMass());
 	return isAlive();
 }

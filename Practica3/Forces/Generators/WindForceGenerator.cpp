@@ -10,6 +10,7 @@ WindForceGenerator::WindForceGenerator(Vector3 const& windVelocity,  const float
 }
 
 bool WindForceGenerator::updateForce(Particle* p) {
+	if (!_active) return isAlive();
 	if (!_area.contains(p->getPosition())) return isAlive();
 
 	Vector3 v = (_windVelicity - p->getVelocity());
