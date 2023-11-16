@@ -24,9 +24,9 @@ public:
 	// Returns an identicle particle
 	virtual Particle* clone() const;
 	// Initializeed the particle with said arguments
-	void initialize(Vector3 pos_offset, Vector3 vel_offset, double life_time = values::std_life_time);
+	void initialize(Vector3 pos_offset, Vector3 vel_offset, double life_time = values::std_life_time, BoundingBox limits = BoundingBox());
 	// Returns an identicle particle initialized with said arguments
-	Particle* clone_initialized(Vector3 pos_offset, Vector3 vel_offset, double life_time = values::std_life_time) const;
+	Particle* clone_initialized(Vector3 pos_offset, Vector3 vel_offset, double life_time = values::std_life_time, BoundingBox limits = BoundingBox()) const;
 
 	// Method to call when you kill the particle
 	virtual void kill();

@@ -9,6 +9,7 @@
 
 class ParticleGenerator {
 public:
+	ParticleGenerator(std::string name, double generation_prob, BoundingBox limits, Vector3 pos, Vector3 vel);
 	ParticleGenerator(std::string name, double generation_prob, Vector3 pos, Vector3 vel);
 	virtual ~ParticleGenerator();
 
@@ -18,6 +19,7 @@ public:
 	virtual std::list<Particle*> generateParticles() = 0;
 
 	void initializeForces(ParticleForceRegistry* pf_registry) noexcept;
+	bool forcesInitialized() const noexcept;
 	void addForce(ForceGenerator* force);
 protected:
 	void applyForces(Particle* p);
@@ -35,6 +37,8 @@ protected:
 	double _generation_probability;
 	std::uniform_real_distribution<> _random_probability;
 
+	BoundingBox _limits;
+	
 	ParticleForceRegistry* _pf_registry;
 	std::vector<ForceGenerator*> _force_generators;
 };

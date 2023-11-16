@@ -1,10 +1,13 @@
 #include "UniformParticleGenerator.h"
 
-UniformParticleGenerator::UniformParticleGenerator(std::string name, Vector3 pos, Vector3 vel, double generation_prob, Vector3 pos_width, Vector3 vel_width) :
-	ParticleGenerator(name, generation_prob, pos, vel),
-	_pos_distribution(pos, pos_width), 
+UniformParticleGenerator::UniformParticleGenerator(std::string name, double generation_prob, BoundingBox limits, Vector3 pos, Vector3 vel, Vector3 pos_width, Vector3 vel_width) :
+	ParticleGenerator(name, generation_prob, limits, pos, vel),
+	_pos_distribution(pos, pos_width),
 	_vel_distribution(vel, vel_width) {
+}
 
+UniformParticleGenerator::UniformParticleGenerator(std::string name, double generation_prob, Vector3 pos, Vector3 vel, Vector3 pos_width, Vector3 vel_width) :
+	UniformParticleGenerator(name, generation_prob, BoundingBox(), pos, vel, pos_width, vel_width) {
 }
 
 std::list<Particle*> UniformParticleGenerator::generateParticles() {

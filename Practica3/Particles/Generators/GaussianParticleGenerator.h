@@ -5,6 +5,7 @@
 
 class GaussianParticleGenerator : public ParticleGenerator {
 public:
+	GaussianParticleGenerator(std::string name, double generation_prob, BoundingBox limits, Vector3 mean_pos, Vector3 mean_vel, Vector3 dev_pos, Vector3 dev_vel);
 	GaussianParticleGenerator(std::string name, double generation_prob, Vector3 mean_pos, Vector3 mean_vel, Vector3 dev_pos, Vector3 dev_vel);
 
 	std::list<Particle*> generateParticles() override;

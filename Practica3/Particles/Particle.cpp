@@ -60,16 +60,17 @@ Particle* Particle::clone() const {
 	return new Particle(pose.p, _mass, _vel, renderItem->color, _gravity, _damping, _initial_life_time, _pos_limits);
 }
 
-void Particle::initialize(Vector3 pos_offset, Vector3 vel_offset, double life_time) {
+void Particle::initialize(Vector3 pos_offset, Vector3 vel_offset, double life_time, BoundingBox limits) {
 	pose.p += pos_offset;
 	_vel += vel_offset;
 	_initial_life_time = life_time;
 	_life_time = life_time;
+	_pos_limits = limits;
 }
 
-Particle* Particle::clone_initialized(Vector3 pos_offset, Vector3 vel_offset, double life_time) const {
+Particle* Particle::clone_initialized(Vector3 pos_offset, Vector3 vel_offset, double life_time, BoundingBox limits) const {
 	Particle* copy = this->clone();
-	copy->initialize(pos_offset, vel_offset, life_time);
+	copy->initialize(pos_offset, vel_offset, life_time, limits);
 	return copy;
 }
 

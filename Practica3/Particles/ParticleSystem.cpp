@@ -15,14 +15,14 @@ ParticleSystem::ParticleSystem() {
 	// Gaussian Particle Generator:
 
 
-	gen = new GaussianParticleGenerator("Gen2", 1, Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(10, 1, 10), Vector3(1, 1, 1));
+	gen = new GaussianParticleGenerator("Gen2", 1, BoundingBox(Vector3(0), 250.0f), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 1), Vector3(1, 1, 1));
 	gen->setParticle(new Particle(Vector3(0, 0, 0), 1));
 	_particle_generators.push_back(gen);
 
 	_force_generators.push_back(new GravityForceGenerator(Vector3(0, 0, 0)));
 	gen->addForce(_force_generators.back());
-	_force_generators.push_back(new WhirlwindForceGenerator(10.0f, 100.0f, 0.0f, BoundingBox(Vector3(0), 5000.0f)));
-	gen->addForce(_force_generators.back());
+	/*_force_generators.push_back(new WhirlwindForceGenerator(10.0f, 100.0f, 0.0f, BoundingBox(Vector3(0), 5000.0f)));
+	gen->addForce(_force_generators.back());*/
 	gen->initializeForces(&_particle_force_registry);
 
 
@@ -69,6 +69,17 @@ void ParticleSystem::integrate(double t) {
 	generateParticles();
 	updateForces(t);
 	updateParticles(t);
+}
+
+void ParticleSystem::explosion() {
+	auto f = new ExplosionForceGenerator(Vector3(0), 10.0, 50.0f);
+	_force_generators.push_back(f);
+	for (auto& p : _particles) {
+		_particle_force_registry.addRegistry(p, f);
+	}
+	for (auto& pg : _particle_generators) {
+		if (pg->forcesInitialized()) pg->addForce(f);
+	}
 }
 
 void ParticleSystem::generateParticles() {

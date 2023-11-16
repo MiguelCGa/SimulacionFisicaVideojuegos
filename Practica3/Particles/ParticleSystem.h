@@ -7,6 +7,7 @@
 #include "../Forces/ParticleForceRegistry.h"
 #include "../Forces/Generators/GravityForceGenerator.h"
 #include "../Forces/Generators/WhirlwindForceGenerator.h"
+#include "../Forces/Generators/ExplosionForceGenerator.h"
 
 class ParticleSystem {
 public:
@@ -15,6 +16,8 @@ public:
 
 	// Updates the system
 	virtual void integrate(double t);
+
+	void explosion();
 
 protected:
 	void generateParticles();

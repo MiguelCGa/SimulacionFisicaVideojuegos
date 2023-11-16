@@ -255,6 +255,7 @@
   <ItemGroup>
     <ClCompile Include="callbacks.cpp" />
     <ClCompile Include="Forces\ForceGenerator.cpp" />
+    <ClCompile Include="Forces\Generators\ExplosionForceGenerator.cpp" />
     <ClCompile Include="Forces\Generators\GravityForceGenerator.cpp" />
     <ClCompile Include="Forces\Generators\WhirlwindForceGenerator.cpp" />
     <ClCompile Include="Forces\Generators\WindForceGenerator.cpp" />
@@ -280,6 +281,7 @@
     <ClInclude Include="constants.h" />
     <ClInclude Include="core.hpp" />
     <ClInclude Include="Forces\ForceGenerator.h" />
+    <ClInclude Include="Forces\Generators\ExplosionForceGenerator.h" />
     <ClInclude Include="Forces\Generators\GravityForceGenerator.h" />
     <ClInclude Include="Forces\Generators\WhirlwindForceGenerator.h" />
     <ClInclude Include="Forces\Generators\WindForceGenerator.h" />
