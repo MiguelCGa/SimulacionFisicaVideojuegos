@@ -61,6 +61,9 @@
     <ClCompile Include="Forces\Generators\ExplosionForceGenerator.cpp">
       <Filter>Forces\Generators</Filter>
     </ClCompile>
+    <ClCompile Include="Forces\Generators\AnchoredSpringForceGenerator.cpp">
+      <Filter>Forces\Generators</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -125,6 +128,9 @@
       <Filter>Forces\Generators</Filter>
     </ClInclude>
     <ClInclude Include="Forces\Generators\ExplosionForceGenerator.h">
+      <Filter>Forces\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\Generators\AnchoredSpringForceGenerator.h">
       <Filter>Forces\Generators</Filter>
     </ClInclude>
   </ItemGroup>
