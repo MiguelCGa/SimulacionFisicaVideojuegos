@@ -112,7 +112,7 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	{
 	case ' ':
 		break;
-	case 'P':
+	case '5':
 		myParticleSystems.back()->explosion();
 		break;
 	default:

@@ -1,5 +1,6 @@
 #include "Particle.h"
 #include "../Random/random.h"
+#include <iostream>
 
 Particle::Particle(Vector3 Pos, float Mass, Vector3 Vel, Vector4 Color, Vector3 gravity, float damping, double life_time, BoundingBox pos_limits) :
 	_mass(Mass),
@@ -36,6 +37,8 @@ bool Particle::integrate(double t) {
 	_life_time -= t;
 
 	clearForce();
+
+	std::cout << pose.p.x << "\t" << pose.p.y << "\t" << pose.p.z << "\n";
 
 	return isAlive();
 }

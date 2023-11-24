@@ -3,11 +3,16 @@
 
 class AnchoredSpringForceGenerator : public ForceGenerator {
 public:
-	AnchoredSpringForceGenerator(double k, double resting_length, Vector3 const& anchorPoint);
-
+	AnchoredSpringForceGenerator(double k, double resting_length, const Vector3& anchorPoint);
+	~AnchoredSpringForceGenerator() {
+		delete item;
+	}
 	bool updateForce(Particle* p) override;
 
 protected:
+	RenderItem* item;
+	physx::PxTransform eeeeeeee;
+
 	Vector3 _anchorPoint;
 	double _k, _resting_length;
 };
