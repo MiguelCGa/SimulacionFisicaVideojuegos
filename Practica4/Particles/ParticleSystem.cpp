@@ -4,17 +4,50 @@
 ParticleSystem::ParticleSystem() {
 	
 	
-	Particle* p = new Particle(Vector3(1, 0, 0), 1);
+	Particle* p = new Particle(Vector3(0.0, -25.0, 0.0), 1);
 	_particles.push_back(p);
 
-	AnchoredSpringForceGenerator* s = new AnchoredSpringForceGenerator(1.0, 10.0, Vector3(0));
+
+	//BuoyancyForceGenerator* b = new BuoyancyForceGenerator(BoundingBox(Vector3(0), Vector3(10, 5, 10)), 100.0f);
 	//GravityForceGenerator* g = new GravityForceGenerator(Vector3(0, -9.8, 0));
 
-	_force_generators.push_back(s);
+	//_force_generators.push_back(b);
 	//_force_generators.push_back(g);
+	//_particle_force_registry.addRegistry(p, b);
+	//_particle_force_registry.addRegistry(p, g);
+
+
+	//Particle* p2 = new Particle(Vector3(0.0, 30.0, 0.0), 1);
+	//_particles.push_back(p2);
+
+
+	//for (int i = 0; i < 6; ++i) {
+	//	Particle* p2 = new Particle(Vector3(0.0, -15.0 * i, 0.0), 1);
+	//	_particles.push_back(p2);
+
+	//	ElasticRubberForceGenerator* s = new ElasticRubberForceGenerator(10.0, 15.0, p);
+	//	GravityForceGenerator* g = new GravityForceGenerator(Vector3(0, -9.8, 0));
+
+	//	_force_generators.push_back(s);
+	//	_force_generators.push_back(g);
+
+	//	_particle_force_registry.addRegistry(p2, s);
+	//	_particle_force_registry.addRegistry(p2, g);
+
+	//	p = p2;
+	//}
+
+	AnchoredSpringForceGenerator* s = new AnchoredSpringForceGenerator(10.0, 25.0, {0,0,0});
+	GravityForceGenerator* g = new GravityForceGenerator(Vector3(0, -9.8, 0));
+	WindForceGenerator* w = new WindForceGenerator(Vector3(10, 0, 0), 5, 0, BoundingBox(Vector3(0), 50));
+
+	_force_generators.push_back(s);
+	_force_generators.push_back(g);
+	_force_generators.push_back(w);
 
 	_particle_force_registry.addRegistry(p, s);
-	//_particle_force_registry.addRegistry(p, g);
+	_particle_force_registry.addRegistry(p, g);
+	_particle_force_registry.addRegistry(p, w);
 }
 
 ParticleSystem::~ParticleSystem() {

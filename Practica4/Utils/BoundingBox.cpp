@@ -32,3 +32,15 @@ bool BoundingBox::contains(Vector3 const& pos) const noexcept {
 Vector3 BoundingBox::getOrigin() const {
 	return _origin;
 }
+
+float BoundingBox::getWidth() const noexcept {
+	return _max.x - _min.x;
+}
+
+float BoundingBox::getHeight() const noexcept {
+	return _max.y - _min.y;
+}
+
+float BoundingBox::getDepth() const noexcept {
+	return _max.z - _min.z;
+}

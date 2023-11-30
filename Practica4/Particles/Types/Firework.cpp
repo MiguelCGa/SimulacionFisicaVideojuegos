@@ -11,7 +11,7 @@ std::vector<Vector4> Firework::genColors = {
 };
 
 Firework::Firework(std::list<Particle*>& childsList, Vector3 Pos, float Mass, Vector3 Vel, Vector4 Color, Vector3 gravity, float damping, double life_time) :
-	Particle(Pos, Mass, Vel, Color, gravity, damping, life_time),
+	Particle(Pos, Mass, Vel, physx::PxGeometryType::eSPHERE, Color, gravity, damping, life_time),
 	_childsList(childsList),
 	numChilds(10),
 	_myGen(FireworkGeneration::Gen1),

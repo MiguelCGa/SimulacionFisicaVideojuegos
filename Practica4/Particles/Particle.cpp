@@ -2,7 +2,7 @@
 #include "../Random/random.h"
 #include <iostream>
 
-Particle::Particle(Vector3 Pos, float Mass, Vector3 Vel, Vector4 Color, Vector3 gravity, float damping, double life_time, BoundingBox pos_limits) :
+Particle::Particle(Vector3 Pos, float Mass, Vector3 Vel, physx::PxGeometryType::Enum form, Vector4 Color, Vector3 gravity, float damping, double life_time, BoundingBox pos_limits) :
 	_mass(Mass),
 	_inverse_mass((Mass <= 0.0f) ? 0.0f : 1.0f / Mass),
 	_damping(damping),
@@ -14,7 +14,7 @@ Particle::Particle(Vector3 Pos, float Mass, Vector3 Vel, Vector4 Color, Vector3 
 	_initial_life_time(life_time),
 	_life_time(randomize_life_time(life_time)),
 	_pos_limits(pos_limits),
-	renderItem(new RenderItem(CreateShape(physx::PxSphereGeometry(1)), &pose, Color)) {
+	renderItem(new RenderItem(CreateShape(physx::PxBoxGeometry(1, 1, 1)), &pose, Color)) {
 }
 
 Particle::~Particle() {
@@ -38,8 +38,6 @@ bool Particle::integrate(double t) {
 
 	clearForce();
 
-	std::cout << pose.p.x << "\t" << pose.p.y << "\t" << pose.p.z << "\n";
-
 	return isAlive();
 }
 
@@ -59,8 +57,18 @@ Vector3 Particle::getVelocity() const {
 	return _vel;
 }
 
+float Particle::getHeight() const {
+	return renderItem->shape->getGeometry().box().halfExtents.y * 2.0f;
+}
+
+float Particle::getSection() const {
+	return 4.0f *
+		renderItem->shape->getGeometry().box().halfExtents.x * 
+		renderItem->shape->getGeometry().box().halfExtents.z;
+}
+
 Particle* Particle::clone() const {
-	return new Particle(pose.p, _mass, _vel, renderItem->color, _gravity, _damping, _initial_life_time, _pos_limits);
+	return new Particle(pose.p, _mass, _vel, renderItem->shape->getGeometryType(), renderItem->color, _gravity, _damping, _initial_life_time, _pos_limits);
 }
 
 void Particle::initialize(Vector3 pos_offset, Vector3 vel_offset, double life_time, BoundingBox limits) {

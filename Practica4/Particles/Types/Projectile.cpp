@@ -24,6 +24,7 @@ Projectile::Projectile(Vector3 Pos, Vector3 Dir, ProjectileType type) :
 	Particle(Pos,
 		get_simulated_mass(projectileMasses[type], projectileSpeeds[type] * Dir),
 		get_simulated_velocity(projectileSpeeds[type] * Dir),
+		physx::PxGeometryType::eSPHERE,
 		projectileColors[type]) {
 	_gravity = get_simulated_gravity(_gravity, projectileSpeeds[type] * Dir);
 }

@@ -8,7 +8,8 @@
 #include "../Forces/Generators/GravityForceGenerator.h"
 #include "../Forces/Generators/WhirlwindForceGenerator.h"
 #include "../Forces/Generators/ExplosionForceGenerator.h"
-#include "../Forces/Generators/AnchoredSpringForceGenerator.h"
+#include "../Forces/Generators/ElasticRubberForceGenerator.h"
+#include "../Forces/Generators/BuoyancyForceGenerator.h"
 
 class ParticleSystem {
 public:

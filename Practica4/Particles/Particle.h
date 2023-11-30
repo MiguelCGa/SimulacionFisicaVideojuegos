@@ -4,9 +4,11 @@
 #include "../constants.h"
 #include "../Utils/BoundingBox.h"
 
+enum ParticleType { SPHERE, SQUARE };
+
 class Particle {
 public:
-	Particle(Vector3 Pos, float Mass, Vector3 Vel = Vector3(0.0f), Vector4 Color = Vector4(255, 255, 255, 1), Vector3 gravity = values::gravity, float damping = values::damping, double life_time = values::std_life_time, BoundingBox pos_limits = BoundingBox());
+	Particle(Vector3 Pos, float Mass, Vector3 Vel = Vector3(0.0f), physx::PxGeometryType::Enum form = physx::PxGeometryType::eSPHERE, Vector4 Color = Vector4(255, 255, 255, 1), Vector3 gravity = values::gravity, float damping = values::damping, double life_time = values::std_life_time, BoundingBox pos_limits = BoundingBox());
 	virtual ~Particle();
 
 	// Updates the particle. Returns whether the particle is alive
@@ -17,6 +19,8 @@ public:
 	float getMass() const noexcept;
 	Vector3 getPosition() const;
 	Vector3 getVelocity() const;
+	float getHeight() const;
+	float getSection() const;
 
 	void addForce(Vector3 const& newForce);
 	void clearForce();
@@ -34,6 +38,9 @@ public:
 	double randomize_life_time(double life_time);
 
 protected:
+	
+
+
 	// Mass
 	float _mass, _inverse_mass;
 	// Movement
@@ -49,3 +56,13 @@ protected:
 	BoundingBox _pos_limits;
 };
 
+inline physx::PxGeometry createSimpleGeometry(physx::PxGeometryType::Enum pt) {
+	switch (pt) {
+	case physx::PxGeometryType::eSPHERE:
+		return physx::PxSphereGeometry(1);
+	case physx::PxGeometryType::eBOX:
+		return physx::PxBoxGeometry(1, 1, 1);
+	default:
+		return physx::PxSphereGeometry(1);
+	}
+}

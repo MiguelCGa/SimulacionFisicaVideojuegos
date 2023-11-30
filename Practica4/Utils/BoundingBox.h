@@ -10,6 +10,9 @@ public:
 
 	bool contains(Vector3 const& pos) const noexcept;
 	Vector3 getOrigin() const;
+	float getWidth() const noexcept;
+	float getHeight() const noexcept;
+	float getDepth() const noexcept;
 protected:
 	Vector3 _min, _max, _origin;
 };

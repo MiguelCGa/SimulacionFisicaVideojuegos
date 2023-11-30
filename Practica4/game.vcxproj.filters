@@ -64,6 +64,9 @@
     <ClCompile Include="Forces\Generators\AnchoredSpringForceGenerator.cpp">
       <Filter>Forces\Generators</Filter>
     </ClCompile>
+    <ClCompile Include="Forces\Generators\SpringForceGenerator.cpp" />
+    <ClCompile Include="Forces\Generators\ElasticRubberForceGenerator.cpp" />
+    <ClCompile Include="Forces\Generators\BuoyancyForceGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -133,6 +136,9 @@
     <ClInclude Include="Forces\Generators\AnchoredSpringForceGenerator.h">
       <Filter>Forces\Generators</Filter>
     </ClInclude>
+    <ClInclude Include="Forces\Generators\SpringForceGenerator.h" />
+    <ClInclude Include="Forces\Generators\ElasticRubberForceGenerator.h" />
+    <ClInclude Include="Forces\Generators\BuoyancyForceGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
