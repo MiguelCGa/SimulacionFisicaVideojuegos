@@ -6,10 +6,12 @@
 #include "Types/Firework.h"
 #include "../Forces/ParticleForceRegistry.h"
 #include "../Forces/Generators/GravityForceGenerator.h"
+#include "../Forces/Generators/DragForceGenerator.h"
 #include "../Forces/Generators/WhirlwindForceGenerator.h"
 #include "../Forces/Generators/ExplosionForceGenerator.h"
 #include "../Forces/Generators/ElasticRubberForceGenerator.h"
 #include "../Forces/Generators/BuoyancyForceGenerator.h"
+#include "../Forces/Generators/LiquidForceGenerator.h"
 
 class ParticleSystem {
 public:

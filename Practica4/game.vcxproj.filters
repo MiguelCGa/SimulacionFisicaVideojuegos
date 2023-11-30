@@ -64,9 +64,19 @@
     <ClCompile Include="Forces\Generators\AnchoredSpringForceGenerator.cpp">
       <Filter>Forces\Generators</Filter>
     </ClCompile>
-    <ClCompile Include="Forces\Generators\SpringForceGenerator.cpp" />
-    <ClCompile Include="Forces\Generators\ElasticRubberForceGenerator.cpp" />
-    <ClCompile Include="Forces\Generators\BuoyancyForceGenerator.cpp" />
+    <ClCompile Include="Forces\Generators\DragForceGenerator.cpp">
+      <Filter>Forces\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Forces\Generators\ElasticRubberForceGenerator.cpp">
+      <Filter>Forces\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Forces\Generators\SpringForceGenerator.cpp">
+      <Filter>Forces\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Forces\Generators\BuoyancyForceGenerator.cpp">
+      <Filter>Forces\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Forces\Generators\LiquidForceGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -136,9 +146,19 @@
     <ClInclude Include="Forces\Generators\AnchoredSpringForceGenerator.h">
       <Filter>Forces\Generators</Filter>
     </ClInclude>
-    <ClInclude Include="Forces\Generators\SpringForceGenerator.h" />
-    <ClInclude Include="Forces\Generators\ElasticRubberForceGenerator.h" />
-    <ClInclude Include="Forces\Generators\BuoyancyForceGenerator.h" />
+    <ClInclude Include="Forces\Generators\DragForceGenerator.h">
+      <Filter>Forces\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\Generators\ElasticRubberForceGenerator.h">
+      <Filter>Forces\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\Generators\SpringForceGenerator.h">
+      <Filter>Forces\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\Generators\BuoyancyForceGenerator.h">
+      <Filter>Forces\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\Generators\LiquidForceGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

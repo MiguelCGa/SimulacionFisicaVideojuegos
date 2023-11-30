@@ -14,7 +14,7 @@ Particle::Particle(Vector3 Pos, float Mass, Vector3 Vel, physx::PxGeometryType::
 	_initial_life_time(life_time),
 	_life_time(randomize_life_time(life_time)),
 	_pos_limits(pos_limits),
-	renderItem(new RenderItem(CreateShape(physx::PxBoxGeometry(1, 1, 1)), &pose, Color)) {
+	renderItem(new RenderItem(createSimpleShape(form), &pose, Color)) {
 }
 
 Particle::~Particle() {
@@ -58,13 +58,31 @@ Vector3 Particle::getVelocity() const {
 }
 
 float Particle::getHeight() const {
-	return renderItem->shape->getGeometry().box().halfExtents.y * 2.0f;
+	switch (renderItem->shape->getGeometryType()) {
+		auto geo = renderItem->shape->getGeometry();
+
+		case physx::PxGeometryType::eBOX:
+			return geo.box().halfExtents.y * 2.0f;
+
+		case physx::PxGeometryType::eSPHERE:
+			return geo.sphere().radius * 2.0f;
+	}
 }
 
 float Particle::getSection() const {
-	return 4.0f *
-		renderItem->shape->getGeometry().box().halfExtents.x * 
-		renderItem->shape->getGeometry().box().halfExtents.z;
+	switch (renderItem->shape->getGeometryType()) {
+		auto geo = renderItem->shape->getGeometry();
+
+		case physx::PxGeometryType::eBOX: {
+			auto boxHE = geo.box().halfExtents;
+			return boxHE.x * boxHE.z * 4.0f;
+		}
+
+		case physx::PxGeometryType::eSPHERE: {
+			auto sphereR = geo.sphere().radius;
+			return sphereR * sphereR * 4.0f;
+		}
+	}
 }
 
 Particle* Particle::clone() const {

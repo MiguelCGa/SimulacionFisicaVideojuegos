@@ -4,8 +4,6 @@
 #include "../constants.h"
 #include "../Utils/BoundingBox.h"
 
-enum ParticleType { SPHERE, SQUARE };
-
 class Particle {
 public:
 	Particle(Vector3 Pos, float Mass, Vector3 Vel = Vector3(0.0f), physx::PxGeometryType::Enum form = physx::PxGeometryType::eSPHERE, Vector4 Color = Vector4(255, 255, 255, 1), Vector3 gravity = values::gravity, float damping = values::damping, double life_time = values::std_life_time, BoundingBox pos_limits = BoundingBox());
@@ -56,13 +54,11 @@ protected:
 	BoundingBox _pos_limits;
 };
 
-inline physx::PxGeometry createSimpleGeometry(physx::PxGeometryType::Enum pt) {
+inline physx::PxShape* createSimpleShape(physx::PxGeometryType::Enum pt) {
 	switch (pt) {
 	case physx::PxGeometryType::eSPHERE:
-		return physx::PxSphereGeometry(1);
+		return CreateShape(physx::PxSphereGeometry(1));
 	case physx::PxGeometryType::eBOX:
-		return physx::PxBoxGeometry(1, 1, 1);
-	default:
-		return physx::PxSphereGeometry(1);
+		return CreateShape(physx::PxBoxGeometry(1, 1, 1));
 	}
 }

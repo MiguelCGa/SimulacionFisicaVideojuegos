@@ -1,6 +1,6 @@
 #pragma once
 #include "../ForceGenerator.h"
-class BuoyancyForceGenerator : public ForceGenerator {
+class BuoyancyForceGenerator : virtual public ForceGenerator {
 public:
 	BuoyancyForceGenerator(BoundingBox area, float d);
 	~BuoyancyForceGenerator();
