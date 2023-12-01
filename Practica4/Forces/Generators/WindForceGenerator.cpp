@@ -2,7 +2,11 @@
 
 
 WindForceGenerator::WindForceGenerator(Vector3 const& windVelocity,  const float k1, const float k2, BoundingBox const& area) :
-	ForceGenerator(-1.0),
+	WindForceGenerator(windVelocity, k1, k2, area, -1.0) {
+}
+
+WindForceGenerator::WindForceGenerator(Vector3 const& windVelocity, const float k1, const float k2, BoundingBox const& area, double duration) :
+	ForceGenerator(duration),
 	_windVelicity(windVelocity),
 	_k1(k1),
 	_k2(k2),

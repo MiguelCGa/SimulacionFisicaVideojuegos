@@ -21,9 +21,16 @@ public:
 	// Updates the system
 	virtual void integrate(double t);
 
+	void createGeneralForce(ForceGenerator* fg);
 	void explosion();
+	void soplido();
+	void lowSlinkyK();
+	void mediumSlinkyK();
+	void highSlinkyK();
 
 protected:
+	void createSlinky(int elements, bool gomas, Vector3 pos, float mass);
+
 	void generateParticles();
 	void updateForces(double t);
 	void updateParticles(double t);
@@ -32,5 +39,7 @@ protected:
 	std::list<ParticleGenerator*> _particle_generators;
 	ParticleForceRegistry _particle_force_registry;
 	std::list<ForceGenerator*> _force_generators;
+
+	std::list<AnchoredSpringForceGenerator*> slinky;
 };
 

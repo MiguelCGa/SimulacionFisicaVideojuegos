@@ -58,8 +58,9 @@ Vector3 Particle::getVelocity() const {
 }
 
 float Particle::getHeight() const {
+	auto geo = renderItem->shape->getGeometry();
+
 	switch (renderItem->shape->getGeometryType()) {
-		auto geo = renderItem->shape->getGeometry();
 
 		case physx::PxGeometryType::eBOX:
 			return geo.box().halfExtents.y * 2.0f;
@@ -70,8 +71,9 @@ float Particle::getHeight() const {
 }
 
 float Particle::getSection() const {
+	auto geo = renderItem->shape->getGeometry();
+
 	switch (renderItem->shape->getGeometryType()) {
-		auto geo = renderItem->shape->getGeometry();
 
 		case physx::PxGeometryType::eBOX: {
 			auto boxHE = geo.box().halfExtents;

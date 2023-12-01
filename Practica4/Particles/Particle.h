@@ -36,8 +36,6 @@ public:
 	double randomize_life_time(double life_time);
 
 protected:
-	
-
 
 	// Mass
 	float _mass, _inverse_mass;

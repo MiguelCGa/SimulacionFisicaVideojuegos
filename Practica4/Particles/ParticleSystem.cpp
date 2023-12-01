@@ -3,70 +3,56 @@
 
 ParticleSystem::ParticleSystem() {
 
-	GravityForceGenerator* g = new GravityForceGenerator(Vector3(0, -9.8, 0));
-	_force_generators.push_back(g);
-	DragForceGenerator* d = new DragForceGenerator();
-	_force_generators.push_back(d);
-	
-	Particle* p = new Particle(Vector3(0.0, 15.0, 0.0), 300);
-	_particles.push_back(p);
-	_particle_force_registry.addRegistry(p, g);
-	_particle_force_registry.addRegistry(p, d);
-
-
-
-	//BuoyancyForceGenerator* b = new BuoyancyForceGenerator(BoundingBox(Vector3(0), Vector3(10, 5, 10)), 1000.0f);
-	//DragForceGenerator* dl = new DragForceGenerator(150, 0, BoundingBox(Vector3(0), Vector3(10, 5, 10)));
-
-	LiquidForceGenerator* l = new LiquidForceGenerator(BoundingBox(Vector3(0), Vector3(10, 1.0, 10)), 1000.0f, 500.0f, 0.0f);
-	_force_generators.push_back(l);
-	_particle_force_registry.addRegistry(p, l);
-	
-	//_force_generators.push_back(b);
-	//_force_generators.push_back(dl);
-	//_particle_force_registry.addRegistry(p, b);
-	//_particle_force_registry.addRegistry(p, dl);
-
-
-	//Particle* p2 = new Particle(Vector3(0.0, 30.0, 0.0), 1);
-	//_particles.push_back(p2);
-
 
 	// SLINKY
+	Vector3 pos(0.0, 15.0, 0.0);
+	float mass = 5.0f;
 
-	//AnchoredSpringForceGenerator* s = new AnchoredSpringForceGenerator(100.0, 5.0, { 0,25,0 });
-	//_force_generators.push_back(s);
-	//_particle_force_registry.addRegistry(p, s);
+	createSlinky(7, false, pos, mass);
+	pos = Vector3(-10.0, 15.0, 0.0);
+	createSlinky(7, true, pos, mass);
 
-	//for (int i = 0; i < 6; ++i) {
-	//	Particle* p2 = new Particle(Vector3(0.0, -15.0 * i, 0.0), 1);
-	//	_particles.push_back(p2);
 
-	//	ElasticRubberForceGenerator* s1 = new ElasticRubberForceGenerator(100.0, 10.0, p);
-	//	ElasticRubberForceGenerator* s2 = new ElasticRubberForceGenerator(100.0, 10.0, p2);
+	pos = Vector3(50.0, 5.0, 0.0);
+	mass = 300.0f;
 
-	//	_force_generators.push_back(s1);
-	//	_force_generators.push_back(s2);
+	Particle* pliquid = new Particle(pos, mass, Vector3(0), physx::PxGeometryType::eBOX);
+	_particles.push_back(pliquid);
 
-	//	_particle_force_registry.addRegistry(p2, s1);
-	//	_particle_force_registry.addRegistry(p, s2);
-	//	_particle_force_registry.addRegistry(p2, g);
-	//	_particle_force_registry.addRegistry(p2, d);
+	BoundingBox area(Vector3(50, 0, 0), Vector3(10, 1.0, 10));
+	float density = 1000.0f, k1 = 50.0f, k2 = 0.0f;
 
-	//	p = p2;
-	//}
+	LiquidForceGenerator* agua = new LiquidForceGenerator(area, density, k1, k2);
+	_force_generators.push_back(agua);
+	_particle_force_registry.addRegistry(pliquid, agua);
 
-	//AnchoredSpringForceGenerator* s = new AnchoredSpringForceGenerator(10.0, 25.0, {0,0,0});
-	//GravityForceGenerator* g = new GravityForceGenerator(Vector3(0, -9.8, 0));
-	//WindForceGenerator* w = new WindForceGenerator(Vector3(10, 0, 0), 5, 0, BoundingBox(Vector3(0), 50));
+	//BuoyancyForceGenerator* b = new BuoyancyForceGenerator(area, density);
+	//_force_generators.push_back(b);
+	//_particle_force_registry.addRegistry(pliquid, b);
+	
+	//DragForceGenerator* dl = new DragForceGenerator(k1, k2, area);
+	//_force_generators.push_back(dl);
+	//_particle_force_registry.addRegistry(pliquid, dl);
 
-	//_force_generators.push_back(s);
-	//_force_generators.push_back(g);
-	//_force_generators.push_back(w);
 
-	//_particle_force_registry.addRegistry(p, s);
-	//_particle_force_registry.addRegistry(p, g);
-	//_particle_force_registry.addRegistry(p, w);
+	pos = Vector3(100.0, 5.0, 0.0);
+
+	pliquid = new Particle(pos, mass, Vector3(0), physx::PxGeometryType::eBOX);
+	_particles.push_back(pliquid);
+
+	area = BoundingBox(Vector3(100, 0, 0), Vector3(10, 1.0, 10));
+	density = 1500.0f;
+	k1 = 500.0f;
+
+	LiquidForceGenerator* viscoso = new LiquidForceGenerator(area, density, k1, k2);
+	_force_generators.push_back(viscoso);
+	_particle_force_registry.addRegistry(pliquid, viscoso);
+
+
+	GravityForceGenerator* g = new GravityForceGenerator(Vector3(0, -9.8, 0));
+	createGeneralForce(g);
+	DragForceGenerator* d = new DragForceGenerator();
+	createGeneralForce(d);
 }
 
 ParticleSystem::~ParticleSystem() {
@@ -91,14 +77,88 @@ void ParticleSystem::integrate(double t) {
 	updateParticles(t);
 }
 
-void ParticleSystem::explosion() {
-	auto f = new ExplosionForceGenerator(Vector3(0), 2.0, 500.0f);
-	_force_generators.push_back(f);
+void ParticleSystem::createGeneralForce(ForceGenerator* fg) {
+	_force_generators.push_back(fg);
 	for (auto& p : _particles) {
-		_particle_force_registry.addRegistry(p, f);
+		_particle_force_registry.addRegistry(p, fg);
 	}
 	for (auto& pg : _particle_generators) {
-		if (pg->forcesInitialized()) pg->addForce(f);
+		if (pg->forcesInitialized()) pg->addForce(fg);
+	}
+}
+
+void ParticleSystem::explosion() {
+	const Vector3 origin(0);
+	constexpr double duration = 2.0;
+	constexpr float K = 500.0f;
+	ExplosionForceGenerator* e = new ExplosionForceGenerator(origin, duration, K);
+	createGeneralForce(e);
+}
+
+void ParticleSystem::soplido() {
+	const Vector3 wVel(40, 0, 0);
+	constexpr float k1 = 50.0f, k2 = 0.0f;
+	constexpr double duration = 2.0;
+	WindForceGenerator* w = new WindForceGenerator(wVel, k1, k2, BoundingBox(), duration);
+	createGeneralForce(w);
+}
+
+void ParticleSystem::lowSlinkyK() {
+	for (auto& e : slinky) {
+		e->setK(10.0);
+	}
+}
+
+void ParticleSystem::mediumSlinkyK() {
+	for (auto& e : slinky) {
+		e->setK(50.0);
+	}
+}
+
+void ParticleSystem::highSlinkyK() {
+	for (auto& e : slinky) {
+		e->setK(250.0);
+	}
+}
+
+void ParticleSystem::createSlinky(int elements, bool gomas, Vector3 pos, float mass) {
+
+	Particle* p = new Particle(pos, mass);
+	_particles.push_back(p);
+
+	AnchoredSpringForceGenerator* s = new AnchoredSpringForceGenerator(100.0, 10.0, { pos.x,25,pos.z });
+	_force_generators.push_back(s);
+	_particle_force_registry.addRegistry(p, s);
+	slinky.push_back(s);
+
+	for (int i = 0; i < elements - 1; ++i) {
+		pos.y = -15.0 * i;
+		mass = 5.0f;
+		Particle* p2 = new Particle(pos, mass);
+		_particles.push_back(p2);
+
+		constexpr double k = 100.0, resting_length = 15.0;
+		SpringForceGenerator* s1;
+		SpringForceGenerator* s2;
+		if (gomas) {
+			s1 = new ElasticRubberForceGenerator(k, resting_length, p);
+			s2 = new ElasticRubberForceGenerator(k, resting_length, p2);
+		}
+		else {
+			s1 = new SpringForceGenerator(k, resting_length, p);
+			s2 = new SpringForceGenerator(k, resting_length, p2);
+		}
+
+		_force_generators.push_back(s1);
+		_force_generators.push_back(s2);
+
+		_particle_force_registry.addRegistry(p2, s1);
+		_particle_force_registry.addRegistry(p, s2);
+
+		slinky.push_back(s1);
+		slinky.push_back(s2);
+
+		p = p2;
 	}
 }
 

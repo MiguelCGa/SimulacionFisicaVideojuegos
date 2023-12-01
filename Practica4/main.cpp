@@ -115,6 +115,18 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	case '5':
 		myParticleSystems.back()->explosion();
 		break;
+	case 'V':
+		myParticleSystems.back()->soplido();
+		break;
+	case 'L':
+		myParticleSystems.back()->highSlinkyK();
+		break;
+	case 'K':
+		myParticleSystems.back()->mediumSlinkyK();
+		break;
+	case 'J':
+		myParticleSystems.back()->lowSlinkyK();
+		break;
 	default:
 		break;
 	}

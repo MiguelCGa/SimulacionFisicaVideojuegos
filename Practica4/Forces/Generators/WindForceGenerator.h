@@ -4,6 +4,7 @@
 class WindForceGenerator : public ForceGenerator {
 public:
 	WindForceGenerator(Vector3 const& windVelocity, const float k1, const float k2, BoundingBox const& area);
+	WindForceGenerator(Vector3 const& windVelocity, const float k1, const float k2, BoundingBox const& area, double duration);
 
 	bool updateForce(Particle* p) override;
 
