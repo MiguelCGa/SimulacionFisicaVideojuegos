@@ -6,7 +6,7 @@ LiquidForceGenerator::LiquidForceGenerator(BoundingBox const& area, float d, flo
 	DragForceGenerator(k1, k2, area) {
 }
 
-void LiquidForceGenerator::applyForce(Particle* p) {
+void LiquidForceGenerator::applyForce(Actor* p) {
 	BuoyancyForceGenerator::applyForce(p);
 	DragForceGenerator::applyForce(p);
 }

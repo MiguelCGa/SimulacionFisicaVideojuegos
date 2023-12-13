@@ -76,7 +76,11 @@
     <ClCompile Include="Forces\Generators\BuoyancyForceGenerator.cpp">
       <Filter>Forces\Generators</Filter>
     </ClCompile>
-    <ClCompile Include="Forces\Generators\LiquidForceGenerator.cpp" />
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="RigidBody.cpp" />
+    <ClCompile Include="Forces\Generators\LiquidForceGenerator.cpp">
+      <Filter>Forces\Generators</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -158,7 +162,14 @@
     <ClInclude Include="Forces\Generators\BuoyancyForceGenerator.h">
       <Filter>Forces\Generators</Filter>
     </ClInclude>
-    <ClInclude Include="Forces\Generators\LiquidForceGenerator.h" />
+    <ClInclude Include="Actor.h" />
+    <ClInclude Include="RigidBody.h" />
+    <ClInclude Include="Random\Utils.h">
+      <Filter>Random</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\Generators\LiquidForceGenerator.h">
+      <Filter>Forces\Generators</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

@@ -16,7 +16,7 @@ AnchoredSpringForceGenerator::~AnchoredSpringForceGenerator() {
 	if (item != nullptr) delete item;
 }
 
-void AnchoredSpringForceGenerator::applyForce(Particle* p) {
+void AnchoredSpringForceGenerator::applyForce(Actor* p) {
 
 	Vector3 relative_pos_vector = _anchorPoint.p - p->getPosition();
 

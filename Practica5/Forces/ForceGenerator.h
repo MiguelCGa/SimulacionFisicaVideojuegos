@@ -28,7 +28,7 @@ public:
 	virtual ~ForceGenerator() {}
 
 	// Updates the force on the particle. Returns weather the force ended.
-	bool updateForce(Particle* particle);
+	bool updateForce(Actor* particle);
 	bool updateTime(double t);
 	/// <returns>
 	/// Whether the force is alive.
@@ -36,7 +36,7 @@ public:
 	bool isAlive() const noexcept;
 protected:
 	// Applies the force on the particle.
-	virtual void applyForce(Particle* particle) = 0;
+	virtual void applyForce(Actor* particle) = 0;
 
 	const BoundingBox _area;
 	const double _duration;

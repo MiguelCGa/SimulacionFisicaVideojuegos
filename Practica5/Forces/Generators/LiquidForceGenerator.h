@@ -7,6 +7,6 @@ class LiquidForceGenerator :
 public:
     LiquidForceGenerator(BoundingBox const& area, float d, float k1, float k2);
 protected:
-    void applyForce(Particle* p) override;
+    void applyForce(Actor* p) override;
 };
 

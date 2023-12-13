@@ -15,7 +15,7 @@ BuoyancyForceGenerator::~BuoyancyForceGenerator() {
 	delete _item;
 }
 
-void BuoyancyForceGenerator::applyForce(Particle* p) {
+void BuoyancyForceGenerator::applyForce(Actor* p) {
 	const float object_height = p->getHeight();
 
 	const float fluid_top = _pos.p.y + _height / 2.0f;

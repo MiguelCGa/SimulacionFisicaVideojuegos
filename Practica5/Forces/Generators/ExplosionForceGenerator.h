@@ -7,7 +7,7 @@ public:
 
 
 protected:
-	void applyForce(Particle* p) override;
+	void applyForce(Actor* p) override;
 
 	Vector3 _origin;
 	float _K, _expansion_speed, _tau;

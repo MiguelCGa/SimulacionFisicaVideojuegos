@@ -7,7 +7,7 @@ public:
 	DragForceGenerator(const float k1, const float k2, BoundingBox const& area);
 
 protected:
-	void applyForce(Particle* p) override;
+	void applyForce(Actor* p) override;
 
 	float _k1, _k2;
 };

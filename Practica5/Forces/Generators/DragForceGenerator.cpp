@@ -15,7 +15,7 @@ DragForceGenerator::DragForceGenerator(const float k1, const float k2, BoundingB
 
 }
 
-void DragForceGenerator::applyForce(Particle* p) {
+void DragForceGenerator::applyForce(Actor* p) {
 	Vector3 v = p->getVelocity();
 	float drag_coef = v.normalize();
 	drag_coef = _k1 * drag_coef + _k2 * drag_coef * drag_coef;

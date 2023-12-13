@@ -18,7 +18,7 @@ ForceGenerator::ForceGenerator(double duration, BoundingBox const& area) :
 	_t(0.0) {
 }
 
-bool ForceGenerator::updateForce(Particle* particle) {
+bool ForceGenerator::updateForce(Actor* particle) {
 	if (!_area.contains(particle->getPosition())) return isAlive();
 	applyForce(particle);
 	return isAlive();

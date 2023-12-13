@@ -253,6 +253,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
     <ClCompile Include="callbacks.cpp" />
     <ClCompile Include="Forces\ForceGenerator.cpp" />
     <ClCompile Include="Forces\Generators\AnchoredSpringForceGenerator.cpp" />
@@ -280,9 +281,11 @@
     <ClCompile Include="RenderUtils.cpp" />
     <ClCompile Include="Render\Camera.cpp" />
     <ClCompile Include="Render\Render.cpp" />
+    <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="Utils\BoundingBox.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actor.h" />
     <ClInclude Include="callbacks.hpp" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="core.hpp" />
@@ -309,9 +312,11 @@
     <ClInclude Include="Random\NormalDistributionVector3.h" />
     <ClInclude Include="Random\random.h" />
     <ClInclude Include="Random\UniformDistributionVector3.h" />
+    <ClInclude Include="Random\Utils.h" />
     <ClInclude Include="RenderUtils.hpp" />
     <ClInclude Include="Render\Camera.h" />
     <ClInclude Include="Render\Render.h" />
+    <ClInclude Include="RigidBody.h" />
     <ClInclude Include="Utils\BoundingBox.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

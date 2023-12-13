@@ -9,7 +9,7 @@ ExplosionForceGenerator::ExplosionForceGenerator(Vector3 const& origin, const do
 	_tau(duration/4.0f) {
 }
 
-void ExplosionForceGenerator::applyForce(Particle* p) {
+void ExplosionForceGenerator::applyForce(Actor* p) {
 	const Vector3 diff(p->getPosition() - _origin);
 	const float r = diff.magnitude();
 	if (r > _expansion_speed * _t) return;

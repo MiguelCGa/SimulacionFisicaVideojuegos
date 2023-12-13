@@ -8,7 +8,7 @@ public:
 
 
 protected:
-	void applyForce(Particle* p) override;
+	void applyForce(Actor* p) override;
 
 	Vector3 _windVelicity;
 	float _k1, _k2;

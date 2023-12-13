@@ -19,7 +19,7 @@ ParticleGenerator::~ParticleGenerator() {
 	delete _model; _model = nullptr;
 }
 
-void ParticleGenerator::setParticle(Particle* model) noexcept {
+void ParticleGenerator::setParticle(Actor* model) noexcept {
 	_model = model;
 }
 
@@ -35,7 +35,7 @@ void ParticleGenerator::addForce(ForceGenerator* force) {
 	_force_generators.push_back(force);
 }
 
-void ParticleGenerator::applyForces(Particle* p) {
+void ParticleGenerator::applyForces(Actor* p) {
 	if (!forcesInitialized() && _force_generators.size() > 0)
 		throw std::exception("Cannot apply forces without initializing.");
 
@@ -48,8 +48,8 @@ void ParticleGenerator::applyForces(Particle* p) {
 	}
 }
 
-Particle* ParticleGenerator::createParticle(Vector3 pos_offset, Vector3 vel_offset, double life_time) {
-	Particle* p = _model->clone_initialized(pos_offset, vel_offset, life_time, _limits);
+Actor* ParticleGenerator::createParticle(Vector3 pos_offset, Vector3 vel_offset, double life_time) {
+	Actor* p = _model->clone_initialized(pos_offset, vel_offset, life_time, _limits);
 	applyForces(p);
 	return p;
 }

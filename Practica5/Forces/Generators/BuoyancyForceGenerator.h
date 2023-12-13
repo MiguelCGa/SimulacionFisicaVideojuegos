@@ -6,7 +6,7 @@ public:
 	~BuoyancyForceGenerator();
 
 protected:
-	void applyForce(Particle* p) override;
+	void applyForce(Actor* p) override;
 
 	float _height;
 	float _volume;

@@ -1,4 +1,5 @@
 #include "Firework.h"
+#include "../../Random/Utils.h"
 
 std::vector<Firework> Firework::fireworkPool = {
 
@@ -33,7 +34,7 @@ void Firework::kill() {
 }
 
 Particle* Firework::clone() const {
-	return new Firework(_childsList, pose.p, _mass, _vel, renderItem->color, _gravity, _damping, _initial_life_time);
+	return new Firework(_childsList, pose.p, _mass, _vel, _renderItem->color, _gravity, _damping, _initial_life_time);
 }
 
 Firework* Firework::createChild() {
@@ -45,7 +46,7 @@ Firework* Firework::createChild() {
 void Firework::initialize_as_child(Vector3 vel_offset, FireworkGeneration gen, double life_time) {
 	_vel += vel_offset;
 	_myGen = gen;
-	renderItem->color = genColors[_myGen];
-	_initial_life_time = life_time;
-	_life_time = randomize_life_time(life_time);
+	_renderItem->color = genColors[_myGen];
+	_initial_life_time = percentage_randomize(life_time, 20.0f);
+	_life_time = _initial_life_time;
 }

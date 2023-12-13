@@ -10,8 +10,8 @@ UniformParticleGenerator::UniformParticleGenerator(std::string name, double gene
 	UniformParticleGenerator(name, generation_prob, BoundingBox(), pos, vel, pos_width, vel_width) {
 }
 
-std::list<Particle*> UniformParticleGenerator::generateParticles() {
-	std::list<Particle*> particles;
+std::list<Actor*> UniformParticleGenerator::generateParticles() {
+	std::list<Actor*> particles;
 	for (int i = 0; i < _max_iteration_particles; ++i)
 		if (_random_probability(gen()) < _generation_probability)
 			particles.push_back(createParticle(_pos_distribution(gen()), _vel_distribution(gen())));

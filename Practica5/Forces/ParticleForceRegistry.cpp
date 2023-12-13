@@ -7,10 +7,10 @@ void ParticleForceRegistry::updateForces(double t) {
 	}
 }
 
-void ParticleForceRegistry::addRegistry(Particle* p, ForceGenerator* f) {
+void ParticleForceRegistry::addRegistry(Actor* p, ForceGenerator* f) {
 	insert({ p, f });
 }
 
-void ParticleForceRegistry::deleteParticleRegistry(Particle* p) {
+void ParticleForceRegistry::deleteParticleRegistry(Actor* p) {
 	erase(p);
 }

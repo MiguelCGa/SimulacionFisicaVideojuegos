@@ -2,7 +2,7 @@
 
 #include <list>
 
-#include "../Particle.h"
+#include "../../Actor.h"
 #include "../../Random/random.h"
 
 #include "../../Forces/ParticleForceRegistry.h"
@@ -14,20 +14,20 @@ public:
 	virtual ~ParticleGenerator();
 
 	// Sets the particle to follow as the model
-	void setParticle(Particle* model) noexcept;
+	void setParticle(Actor* model) noexcept;
 	// Returns a list of new generated particles
-	virtual std::list<Particle*> generateParticles() = 0;
+	virtual std::list<Actor*> generateParticles() = 0;
 
 	void initializeForces(ParticleForceRegistry* pf_registry) noexcept;
 	bool forcesInitialized() const noexcept;
 	void addForce(ForceGenerator* force);
 protected:
-	void applyForces(Particle* p);
-	Particle* createParticle(Vector3 pos_offset, Vector3 vel_offset, double life_time = values::std_life_time);
+	void applyForces(Actor* p);
+	Actor* createParticle(Vector3 pos_offset, Vector3 vel_offset, double life_time = values::std_life_time);
 
 	std::string _name;
 
-	Particle* _model;
+	Actor* _model;
 	Vector3 _mean_pos, _mean_vel;
 
 	// Maximum number of particles to generate in a call to generateParticles()

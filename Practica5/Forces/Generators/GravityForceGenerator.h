@@ -8,7 +8,7 @@ public:
 
 	void setGravity(const Vector3& g);
 private:
-	void applyForce(Particle* p) override;
+	void applyForce(Actor* p) override;
 
 	Vector3 _gravity;
 };

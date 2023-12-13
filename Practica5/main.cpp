@@ -59,7 +59,7 @@ void initPhysics(bool interactive)
 	gScene = gPhysics->createScene(sceneDesc);
 
 
-	myParticleSystems.push_back(new ParticleSystem());
+	myParticleSystems.push_back(new ParticleSystem(gPhysics, gScene));
 }
 
 

@@ -12,7 +12,7 @@ WindForceGenerator::WindForceGenerator(Vector3 const& windVelocity, const float 
 	_k2(k2) {
 }
 
-void WindForceGenerator::applyForce(Particle* p) {
+void WindForceGenerator::applyForce(Actor* p) {
 	Vector3 v = (_windVelicity - p->getVelocity());
 	const float drag_coef = v.normalize();
 	const Vector3 dragF = _k1 * v + _k2 * drag_coef * v;

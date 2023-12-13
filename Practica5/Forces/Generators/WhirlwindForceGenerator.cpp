@@ -6,7 +6,7 @@ WhirlwindForceGenerator::WhirlwindForceGenerator(const float K,  const float k1,
 	_K(K) {
 }
 
-void WhirlwindForceGenerator::applyForce(Particle* p) {
+void WhirlwindForceGenerator::applyForce(Actor* p) {
 
 	const Vector3 q = p->getPosition();
 	const Vector3 c = _area.getOrigin();

@@ -1,12 +1,26 @@
 #include "ParticleSystem.h"
 
-ParticleSystem::ParticleSystem() {
+ParticleSystem::ParticleSystem(physx::PxPhysics* gPhysics, physx::PxScene* mScene) : 
+	_maxElems(50) {
 
+	GaussianParticleGenerator* pg = new GaussianParticleGenerator("a", 1, /*BoundingBox(Vector3(0), 100.0f),*/ Vector3(0), Vector3(0), Vector3(50), Vector3(1));
+	_particle_generators.push_back(pg);
+	RigidBody* rb = new RigidBody(gPhysics, mScene, Vector3(0),
+		physx::PxActorType::eRIGID_DYNAMIC,
+		createRegularShape(physx::PxGeometryType::eBOX, 5.0f),
+		0.1,
+		Vector4(0.5),
+		2.0,
+		BoundingBox());
+	mScene->removeActor(*rb->getActor());
 
+	//Particle* rb = new Particle(Vector3(0), 1);
+
+	pg->setParticle(rb);
 }
 
 ParticleSystem::~ParticleSystem() {
-	for (Particle*& part : _particles) {
+	for (Actor*& part : _particles) {
 		delete part; 
 		part = nullptr;
 	}
@@ -47,7 +61,8 @@ void ParticleSystem::explosion() {
 
 void ParticleSystem::generateParticles() {
 	for (auto const& gen : _particle_generators) {
-		_particles.splice(_particles.end(), gen->generateParticles());
+		if (_particles.size() <= _maxElems) 
+			_particles.splice(_particles.end(), gen->generateParticles());
 	}
 }
 

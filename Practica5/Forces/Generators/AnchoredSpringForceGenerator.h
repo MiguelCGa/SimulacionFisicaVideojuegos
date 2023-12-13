@@ -12,7 +12,7 @@ public:
 	inline void setK(double k) { if (k > 0.0) _k = k; }
 
 protected:
-	void applyForce(Particle* p) override;
+	void applyForce(Actor* p) override;
 
 	RenderItem* item;
 

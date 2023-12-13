@@ -5,7 +5,7 @@ GravityForceGenerator::GravityForceGenerator(const Vector3& g) :
 	_gravity(g) {
 }
 
-void GravityForceGenerator::applyForce(Particle* p) {
+void GravityForceGenerator::applyForce(Actor* p) {
 	p->addForce(_gravity * p->getMass());
 }
 

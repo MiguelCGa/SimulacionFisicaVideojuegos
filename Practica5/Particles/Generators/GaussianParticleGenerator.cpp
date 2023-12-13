@@ -13,8 +13,8 @@ GaussianParticleGenerator::GaussianParticleGenerator(std::string name, double ge
 	GaussianParticleGenerator(name, generation_prob, BoundingBox(), mean_pos, mean_vel, dev_pos, dev_vel) {
 }
 
-std::list<Particle*> GaussianParticleGenerator::generateParticles() {
-	std::list<Particle*> particles;
+std::list<Actor*> GaussianParticleGenerator::generateParticles() {
+	std::list<Actor*> particles;
 	for (int i = 0; i < _max_iteration_particles; ++i)
 		if (_random_probability(gen()) < _generation_probability)
 			particles.push_back(createParticle(_pos_distribution(gen()), _vel_distribution(gen()), _life_time_distribution(gen())));

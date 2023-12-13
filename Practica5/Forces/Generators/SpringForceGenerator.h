@@ -4,11 +4,11 @@
 
 class SpringForceGenerator : public AnchoredSpringForceGenerator {
 public:
-	SpringForceGenerator(double k, double resting_length, Particle* other);
+	SpringForceGenerator(double k, double resting_length, Actor* other);
 
 protected:
-	void applyForce(Particle* p) override;
+	void applyForce(Actor* p) override;
 
-	Particle* _other;
+	Actor* _other;
 };
 

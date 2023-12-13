@@ -2,8 +2,8 @@
 #include "SpringForceGenerator.h"
 class ElasticRubberForceGenerator : public SpringForceGenerator {
 public:
-	ElasticRubberForceGenerator(double k, double resting_length, Particle* other);
+	ElasticRubberForceGenerator(double k, double resting_length, Actor* other);
 protected:
-	void applyForce(Particle* p) override;
+	void applyForce(Actor* p) override;
 };
 
