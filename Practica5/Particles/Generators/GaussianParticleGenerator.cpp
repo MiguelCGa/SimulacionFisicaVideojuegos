@@ -17,7 +17,7 @@ std::list<Actor*> GaussianParticleGenerator::generateParticles() {
 	std::list<Actor*> particles;
 	for (int i = 0; i < _max_iteration_particles; ++i)
 		if (_random_probability(gen()) < _generation_probability)
-			particles.push_back(createParticle(_pos_distribution(gen()), _vel_distribution(gen()), _life_time_distribution(gen())));
+			particles.push_back(createParticle(_pos_distribution(gen()), _vel_distribution(gen()), max(_life_time_distribution(gen()), 1.0)));
 		
 	return particles;
 }
