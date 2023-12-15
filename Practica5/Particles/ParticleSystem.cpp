@@ -3,21 +3,34 @@
 ParticleSystem::ParticleSystem(physx::PxPhysics* gPhysics, physx::PxScene* mScene) : 
 	_maxElems(500) {
 
-	GaussianParticleGenerator* pg = new GaussianParticleGenerator("a", 1, BoundingBox(Vector3(0), 50.0f), Vector3(0), Vector3(0), Vector3(50), Vector3(1));
+	GaussianParticleGenerator* pg = new GaussianParticleGenerator("a", 1, BoundingBox(), Vector3(0), Vector3(0), Vector3(50), Vector3(1));
 	_particle_generators.push_back(pg);
-	//RigidBody* rb = new RigidBody(gPhysics, mScene, Vector3(0),
-	//	physx::PxActorType::eRIGID_DYNAMIC,
-	//	createRegularShape(physx::PxGeometryType::eBOX, 5.0f),
-	//	0.1,
-	//	Vector4(0.5),
-	//	2.0,
-	//	BoundingBox());
-	//mScene->removeActor(*rb->getActor());
+	pg->initializeForces(&_particle_force_registry);
+	
+	
+	RigidBody* model = new RigidBody(gPhysics, mScene,
+		Vector3(0),												// position
+		physx::PxActorType::eRIGID_DYNAMIC,						// type
+		createRegularShape(physx::PxGeometryType::eBOX, 2.0f),	// shape (type, dimentions)
+		1.0,													// density
+		Vector4(0.5),											// color
+		2.0,													// lifetime
+		BoundingBox());											// limits
+	
+	mScene->removeActor(*model->getActor()); // para que el modelo no tenga fisicas
+	pg->setParticle(model);
 
-	//Particle* rb = new Particle(Vector3(0), 1);
-	Firework* rb = new Firework(_particles, Vector3(0));
 
-	pg->setParticle(rb);
+
+	RigidBody* suelo = new RigidBody(gPhysics, mScene, 
+		Vector3(0, -100, 0),								// position
+		physx::PxActorType::eRIGID_STATIC,					// type
+		CreateShape(physx::PxBoxGeometry(500, 10, 500)),	// shape (type, dimentions)
+		0.0,												// density
+		Vector4(0.5),										// color
+		-1.0,												// lifetime
+		BoundingBox());										// limits
+	_particles.push_back(suelo);							
 }
 
 ParticleSystem::~ParticleSystem() {
@@ -55,9 +68,31 @@ void ParticleSystem::createGeneralForce(ForceGenerator* fg) {
 void ParticleSystem::explosion() {
 	const Vector3 origin(0);
 	constexpr double duration = 2.0;
-	constexpr float K = 500000000.0f;
+	constexpr float K = 500000.0f;
 	ExplosionForceGenerator* e = new ExplosionForceGenerator(origin, duration, K);
 	createGeneralForce(e);
+}
+
+void ParticleSystem::wind() {
+	if (_wind == nullptr) {
+		_wind = new WindForceGenerator(Vector3(30.0f, 20.0f, 0.0f), 100.0f, 0.0f, BoundingBox(Vector3(0), 100.0f));
+		createGeneralForce(_wind);
+	}
+	else {
+		_wind->unalive();
+		_wind = nullptr;
+	}
+}
+
+void ParticleSystem::whirlwind() {
+	if (_whirlwind == nullptr) {
+		_whirlwind = new WhirlwindForceGenerator(1.0f, 100.0f, 0.0f, BoundingBox());
+		createGeneralForce(_whirlwind);
+	}
+	else {
+		_whirlwind->unalive();
+		_whirlwind = nullptr;
+	}
 }
 
 void ParticleSystem::generateParticles() {

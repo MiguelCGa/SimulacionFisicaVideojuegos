@@ -24,7 +24,10 @@ RigidBody::~RigidBody() {
 
 
 void RigidBody::addForce(Vector3 const& newForce) {
-	if (isDynamic()) static_cast<physx::PxRigidBody*>(_rigidActor)->addForce(newForce);
+	if (isDynamic()) {
+		auto rb = getRigidBody();
+		rb->addForce(newForce);
+	}
 }
 
 

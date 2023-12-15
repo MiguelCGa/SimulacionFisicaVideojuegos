@@ -24,6 +24,8 @@ public:
 
 	void createGeneralForce(ForceGenerator* fg);
 	void explosion();
+	void wind();
+	void whirlwind();
 
 protected:
 
@@ -37,5 +39,8 @@ protected:
 	std::list<ForceGenerator*> _force_generators;
 
 	unsigned int _maxElems;
+
+	WindForceGenerator* _wind = nullptr;
+	WhirlwindForceGenerator* _whirlwind= nullptr;
 };
 

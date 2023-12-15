@@ -56,5 +56,5 @@ bool Actor::integrate(double t) {
 }
 
 bool Actor::isAlive() const {
-	return _life_time > 0.0 && _pos_limits.contains(getPosition());
+	return (_life_time > 0.0 || _initial_life_time < 0.0) && _pos_limits.contains(getPosition());
 }

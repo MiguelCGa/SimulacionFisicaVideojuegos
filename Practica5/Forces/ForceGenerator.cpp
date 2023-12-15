@@ -30,5 +30,5 @@ bool ForceGenerator::updateTime(double t) {
 }
 
 bool ForceGenerator::isAlive() const noexcept {
-	return _t < _duration || _duration < 0.0; // Devuelve true si ya era cero o si es positivo
+	return (_t < _duration || _duration < 0.0) && _alive; // Devuelve true si ya era cero o si es positivo
 }

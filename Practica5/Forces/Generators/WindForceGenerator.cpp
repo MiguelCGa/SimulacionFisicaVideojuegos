@@ -14,7 +14,7 @@ WindForceGenerator::WindForceGenerator(Vector3 const& windVelocity, const float 
 
 void WindForceGenerator::applyForce(Actor* p) {
 	Vector3 v = (_windVelicity - p->getVelocity());
-	const float drag_coef = v.normalize();
+	const float drag_coef = v.magnitude();
 	const Vector3 dragF = _k1 * v + _k2 * drag_coef * v;
 
 	p->addForce(dragF);

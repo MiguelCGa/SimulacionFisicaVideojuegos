@@ -40,7 +40,7 @@ Firework* Firework::createChild() {
 }
 
 void Firework::initialize_as_child(Vector3 vel_offset, BoundingBox const& limits) {
-	_myGen = (FireworkGeneration)(_myGen + 1);
+	_myGen = static_cast<FireworkGeneration>(_myGen + 1);
 	_mass = fireworkPool[_myGen].mass;
 	_vel = fireworkPool[_myGen].init_vel;
 	_renderItem->color = fireworkPool[_myGen].color;
