@@ -22,8 +22,8 @@ public:
 	virtual void kill();
 
 	virtual Vector3 getPosition() const = 0;
-	virtual Vector3 getVelocity() const = 0;
-	virtual float getMass() const = 0;
+	virtual Vector3 getVelocity() const;
+	virtual float getMass() const;
 	virtual float getHeight() const;
 	virtual float getSection() const;
 

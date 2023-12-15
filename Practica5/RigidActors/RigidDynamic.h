@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Actor.h"
+#include "../Actor.h"
 
-class RigidBody : public Actor {
+class RigidDynamic : public Actor {
 public:
-	RigidBody(physx::PxPhysics* ph, physx::PxScene* mScene, Vector3 pos, physx::PxActorType::Enum type, physx::PxShape* shape, double density, Vector4 color, double life_time, BoundingBox const& pos_limits);
-	virtual ~RigidBody();
+	RigidDynamic(physx::PxPhysics* ph, physx::PxScene* mScene, Vector3 pos, physx::PxActorType::Enum type, physx::PxShape* shape, double density, Vector4 color, double life_time, BoundingBox const& pos_limits);
+	virtual ~RigidDynamic();
 	
 	void addForce(Vector3 const& newForce) override;
 	// Returns an identicle actor
@@ -16,7 +16,6 @@ public:
 	Vector3 getPosition() const override;
 	Vector3 getVelocity() const override;
 	float getMass() const override;
-	bool isDynamic() const;
 
 	physx::PxRigidActor* getActor();
 
@@ -26,11 +25,8 @@ protected:
 	physx::PxPhysics* _gPhysics;
 	physx::PxScene* _mScene;
 	physx::PxShape* _shape;
-	physx::PxRigidActor* _rigidActor;
+	physx::PxRigidDynamic* _rigidDynamic;
 	double _density;
 
-private:
-	physx::PxRigidBody* getRigidBody() const;
-	physx::PxRigidActor* createRigidActor(physx::PxPhysics* gPhysics, physx::PxActorType::Enum type, Vector3 pos);
 };
 

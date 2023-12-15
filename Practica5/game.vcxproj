@@ -281,7 +281,8 @@
     <ClCompile Include="RenderUtils.cpp" />
     <ClCompile Include="Render\Camera.cpp" />
     <ClCompile Include="Render\Render.cpp" />
-    <ClCompile Include="RigidBody.cpp" />
+    <ClCompile Include="RigidActors\RigidDynamic.cpp" />
+    <ClCompile Include="RigidActors\RigidStatic.cpp" />
     <ClCompile Include="Utils\BoundingBox.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -316,7 +317,8 @@
     <ClInclude Include="RenderUtils.hpp" />
     <ClInclude Include="Render\Camera.h" />
     <ClInclude Include="Render\Render.h" />
-    <ClInclude Include="RigidBody.h" />
+    <ClInclude Include="RigidActors\RigidDynamic.h" />
+    <ClInclude Include="RigidActors\RigidStatic.h" />
     <ClInclude Include="Utils\BoundingBox.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

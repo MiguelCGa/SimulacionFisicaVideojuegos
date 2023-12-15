@@ -77,9 +77,14 @@
       <Filter>Forces\Generators</Filter>
     </ClCompile>
     <ClCompile Include="Actor.cpp" />
-    <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="Forces\Generators\LiquidForceGenerator.cpp">
       <Filter>Forces\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidActors\RigidDynamic.cpp">
+      <Filter>RigidActors</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidActors\RigidStatic.cpp">
+      <Filter>RigidActors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -163,12 +168,17 @@
       <Filter>Forces\Generators</Filter>
     </ClInclude>
     <ClInclude Include="Actor.h" />
-    <ClInclude Include="RigidBody.h" />
     <ClInclude Include="Random\Utils.h">
       <Filter>Random</Filter>
     </ClInclude>
     <ClInclude Include="Forces\Generators\LiquidForceGenerator.h">
       <Filter>Forces\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidActors\RigidDynamic.h">
+      <Filter>RigidActors</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidActors\RigidStatic.h">
+      <Filter>RigidActors</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +205,9 @@
     </Filter>
     <Filter Include="Forces\Generators">
       <UniqueIdentifier>{02878075-4aed-4965-a9f4-3cf862620bb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RigidActors">
+      <UniqueIdentifier>{0df96742-eaa4-49f6-b6ca-ad580f425ba6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
