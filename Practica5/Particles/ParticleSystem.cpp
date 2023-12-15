@@ -3,7 +3,14 @@
 ParticleSystem::ParticleSystem(physx::PxPhysics* gPhysics, physx::PxScene* mScene) : 
 	_maxElems(500) {
 
-	GaussianParticleGenerator* pg = new GaussianParticleGenerator("a", 1, BoundingBox(), Vector3(0), Vector3(0), Vector3(50), Vector3(1));
+	GaussianParticleGenerator* pg = new GaussianParticleGenerator(
+		"ActorGenerator",	// name
+		1,					// generations per iteration
+		BoundingBox(),		// limits
+		Vector3(0),			// mean position
+		Vector3(0),			// mean velocity
+		Vector3(50),		// dev position
+		Vector3(1));		// dev velocity
 	_particle_generators.push_back(pg);
 	pg->initializeForces(&_particle_force_registry);
 	
@@ -11,7 +18,7 @@ ParticleSystem::ParticleSystem(physx::PxPhysics* gPhysics, physx::PxScene* mScen
 	RigidBody* model = new RigidBody(gPhysics, mScene,
 		Vector3(0),												// position
 		physx::PxActorType::eRIGID_DYNAMIC,						// type
-		createRegularShape(physx::PxGeometryType::eBOX, 2.0f),	// shape (type, dimentions)
+		createRegularShape(physx::PxGeometryType::eBOX, 2.0f),	// shape (type, dimensions)
 		1.0,													// density
 		Vector4(0.5),											// color
 		2.0,													// lifetime
@@ -75,7 +82,11 @@ void ParticleSystem::explosion() {
 
 void ParticleSystem::wind() {
 	if (_wind == nullptr) {
-		_wind = new WindForceGenerator(Vector3(30.0f, 20.0f, 0.0f), 100.0f, 0.0f, BoundingBox(Vector3(0), 100.0f));
+		_wind = new WindForceGenerator(
+			Vector3(30.0f, 20.0f, 0.0f),		// wind velocity
+			100.0f,								// k1
+			0.0f,								// k2
+			BoundingBox(Vector3(0), 100.0f));	// area
 		createGeneralForce(_wind);
 	}
 	else {
@@ -86,7 +97,11 @@ void ParticleSystem::wind() {
 
 void ParticleSystem::whirlwind() {
 	if (_whirlwind == nullptr) {
-		_whirlwind = new WhirlwindForceGenerator(1.0f, 100.0f, 0.0f, BoundingBox());
+		_whirlwind = new WhirlwindForceGenerator(
+			1.0f,			// K
+			100.0f,			// k1
+			0.0f,			// k2
+			BoundingBox());	// area
 		createGeneralForce(_whirlwind);
 	}
 	else {

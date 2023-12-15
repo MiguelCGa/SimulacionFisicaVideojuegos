@@ -1,8 +1,15 @@
 # SimulacionFisicaVideojuegos
-Repositorio de las prácticas de la asignatura de Simulación Física de Videojuegos
 
-En la carpeta skeleton estará vuestro código fuente
+## Aclaraciones para la Práctica 5
 
-Necesitaréis además descomprimir el archivo que se indica a continuación en la raíz del repositorio:
+La escena que se muestra está formada por un suelo implementado con un RigidStatic y un generador Gaussiano de objetos RigidDynamic.
 
-Carpetas bin y common https://ucomplutense-my.sharepoint.com/:u:/g/personal/davalejo_ucm_es/EZcsdyIoqTFOrF4hdfkVYk0BJZ9IycJ3QqXQFwaXVrlSKg?e=pfs6IO
+Para implementar los sólidos rígidos se ha creado una clase intermedia entre estos y las partículas, ``Actor``, y se ha adaptado todo aquello antes pensado para partículas para funcionar con esta nueva clase base.
+
+En la demo está implementado para una fácil comprobación de que las fuerzas funcionan el siguiente input por teclado:
+- Tecla: ``3``; Fuerza: Viento
+- Tecla: ``4``; Fuerza: Torbellino
+- Tecla: ``5``; Fuerza: Explosión
+
+En la clase ParticleSystem están los métodos ``wind()``, ``whirlwind()`` y ``explosion()`` que provocan estas fuerzas. Se puede acceder y cambiar los valores de las mismas ahí indicados.
+También en la contructora de dicha clase se encuentra la construcción de los elementos que forman la escena, pudiéndose modificar sus valores también indicados.
