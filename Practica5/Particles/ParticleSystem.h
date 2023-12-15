@@ -3,8 +3,7 @@
 #include <list>
 #include "Generators/UniformParticleGenerator.h"
 #include "Generators/GaussianParticleGenerator.h"
-#include "../RigidActors/RigidStatic.h"
-#include "../RigidActors/RigidDynamic.h"
+#include "../RigidBody.h"
 #include "Types/Firework.h"
 #include "../Forces/ParticleForceRegistry.h"
 #include "../Forces/Generators/GravityForceGenerator.h"

@@ -20,14 +20,6 @@ Actor* Actor::clone_initialized(Vector3 pos_offset, Vector3 vel_offset, double l
 
 void Actor::kill() { }
 
-Vector3 Actor::getVelocity() const {
-	return Vector3();
-}
-
-float Actor::getMass() const {
-	return 0.0f;
-}
-
 float Actor::getHeight() const {
 	auto geo = _renderItem->shape->getGeometry();
 
@@ -64,5 +56,5 @@ bool Actor::integrate(double t) {
 }
 
 bool Actor::isAlive() const {
-	return (_life_time > 0.0 || _initial_life_time < 0.0) && _pos_limits.contains(getPosition());
+	return _life_time > 0.0 && _pos_limits.contains(getPosition());
 }
