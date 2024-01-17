@@ -1,15 +1,7 @@
-# SimulacionFisicaVideojuegos
+# Jump. Consiste en saltar
 
-## Aclaraciones para la Práctica 5
+## Manual de uso
 
-La escena que se muestra está formada por un suelo implementado con un RigidStatic y un generador Gaussiano de objetos RigidDynamic.
+El modo de uso es muy sencillo y consiste de una sola tecla, la “j”, con la cual se inicia el juego y con la que se hará saltar al jugador.
 
-Para implementar los sólidos rígidos se ha creado una clase intermedia entre estos y las partículas, ``Actor``, y se ha adaptado todo aquello antes pensado para partículas para funcionar con esta nueva clase base.
-
-En la demo está implementado para una fácil comprobación de que las fuerzas funcionan el siguiente input por teclado:
-- Tecla: ``3``; Fuerza: Viento
-- Tecla: ``4``; Fuerza: Torbellino
-- Tecla: ``5``; Fuerza: Explosión
-
-En la clase ParticleSystem están los métodos ``wind()``, ``whirlwind()`` y ``explosion()`` que provocan estas fuerzas. Se puede acceder y cambiar los valores de las mismas ahí indicados.
-También en la contructora de dicha clase se encuentra la construcción de los elementos que forman la escena, pudiéndose modificar sus valores también indicados.
+- Tecla: ``j``; Iniciar el juego y Saltar
