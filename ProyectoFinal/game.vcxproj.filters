@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Render\Camera.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\Render.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderUtils.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="callbacks.cpp" />
+    <ClCompile Include="Particles\Particle.cpp">
+      <Filter>Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Particles\ParticleSystem.cpp">
+      <Filter>Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="Particles\Types\Firework.cpp">
+      <Filter>Particles\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Particles\Types\Projectile.cpp">
+      <Filter>Particles\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Particles\Generators\GaussianParticleGenerator.cpp">
+      <Filter>Particles\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Particles\Generators\ParticleGenerator.cpp">
+      <Filter>Particles\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Particles\Generators\UniformParticleGenerator.cpp">
+      <Filter>Particles\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Random\NormalDistributionVector3.cpp">
+      <Filter>Random</Filter>
+    </ClCompile>
+    <ClCompile Include="Random\UniformDistributionVector3.cpp">
+      <Filter>Random</Filter>
+    </ClCompile>
+    <ClCompile Include="Random\random.cpp">
+      <Filter>Random</Filter>
+    </ClCompile>
+    <ClCompile Include="Forces\ForceGenerator.cpp">
+      <Filter>Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="Forces\ParticleForceRegistry.cpp">
+      <Filter>Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\BoundingBox.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Forces\Generators\GravityForceGenerator.cpp">
+      <Filter>Forces\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Forces\Generators\WindForceGenerator.cpp">
+      <Filter>Forces\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Forces\Generators\WhirlwindForceGenerator.cpp">
+      <Filter>Forces\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Forces\Generators\ExplosionForceGenerator.cpp">
+      <Filter>Forces\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Forces\Generators\AnchoredSpringForceGenerator.cpp">
+      <Filter>Forces\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Forces\Generators\DragForceGenerator.cpp">
+      <Filter>Forces\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Forces\Generators\ElasticRubberForceGenerator.cpp">
+      <Filter>Forces\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Forces\Generators\SpringForceGenerator.cpp">
+      <Filter>Forces\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Forces\Generators\BuoyancyForceGenerator.cpp">
+      <Filter>Forces\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="RigidBody.cpp" />
+    <ClCompile Include="Forces\Generators\LiquidForceGenerator.cpp">
+      <Filter>Forces\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Forces\Generators\JumpForceGenerator.cpp">
+      <Filter>Forces\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Forces\ForceSystem.cpp">
+      <Filter>Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenes\PlayScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacles\Obstacle.cpp">
+      <Filter>Obstacle</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacles\Tornado.cpp">
+      <Filter>Obstacle</Filter>
+    </ClCompile>
+    <ClCompile Include="Forces\Generators\MovableWhirlwindForceGenerator.cpp">
+      <Filter>Forces\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacles\Block.cpp">
+      <Filter>Obstacle</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacles\Cannon.cpp">
+      <Filter>Obstacle</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="core.hpp" />
+    <ClInclude Include="Render\Camera.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\Render.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderUtils.hpp" />
+    <ClInclude Include="callbacks.hpp" />
+    <ClInclude Include="constants.h" />
+    <ClInclude Include="Particles\Particle.h">
+      <Filter>Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Particles\ParticleSystem.h">
+      <Filter>Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="Particles\Types\Firework.h">
+      <Filter>Particles\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Particles\Types\Projectile.h">
+      <Filter>Particles\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Particles\Generators\GaussianParticleGenerator.h">
+      <Filter>Particles\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Particles\Generators\ParticleGenerator.h">
+      <Filter>Particles\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Particles\Generators\UniformParticleGenerator.h">
+      <Filter>Particles\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Random\DistributionVector3.h">
+      <Filter>Random</Filter>
+    </ClInclude>
+    <ClInclude Include="Random\NormalDistributionVector3.h">
+      <Filter>Random</Filter>
+    </ClInclude>
+    <ClInclude Include="Random\random.h">
+      <Filter>Random</Filter>
+    </ClInclude>
+    <ClInclude Include="Random\UniformDistributionVector3.h">
+      <Filter>Random</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\ForceGenerator.h">
+      <Filter>Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\ParticleForceRegistry.h">
+      <Filter>Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\BoundingBox.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\Generators\GravityForceGenerator.h">
+      <Filter>Forces\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\Generators\WindForceGenerator.h">
+      <Filter>Forces\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\Generators\WhirlwindForceGenerator.h">
+      <Filter>Forces\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\Generators\ExplosionForceGenerator.h">
+      <Filter>Forces\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\Generators\AnchoredSpringForceGenerator.h">
+      <Filter>Forces\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\Generators\DragForceGenerator.h">
+      <Filter>Forces\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\Generators\ElasticRubberForceGenerator.h">
+      <Filter>Forces\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\Generators\SpringForceGenerator.h">
+      <Filter>Forces\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\Generators\BuoyancyForceGenerator.h">
+      <Filter>Forces\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h" />
+    <ClInclude Include="RigidBody.h" />
+    <ClInclude Include="Random\Utils.h">
+      <Filter>Random</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\Generators\LiquidForceGenerator.h">
+      <Filter>Forces\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Forces\Generators\JumpForceGenerator.h">
+      <Filter>Forces\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\ForceSystem.h">
+      <Filter>Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenes\PlayScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacles\Obstacle.h">
+      <Filter>Obstacle</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacles\Tornado.h">
+      <Filter>Obstacle</Filter>
+    </ClInclude>
+    <ClInclude Include="Forces\Generators\MovableWhirlwindForceGenerator.h">
+      <Filter>Forces\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacles\Block.h">
+      <Filter>Obstacle</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacles\Cannon.h">
+      <Filter>Obstacle</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Render">
+      <UniqueIdentifier>{d04b4f9f-5a69-465e-8070-25c6d0bcd3c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Particles">
+      <UniqueIdentifier>{182c48d8-9323-458f-bea2-76b7ab18e5b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Particles\Generators">
+      <UniqueIdentifier>{2aec283b-70cf-47c0-9001-5ab06faca3ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Particles\Types">
+      <UniqueIdentifier>{6f556522-3ddc-4f58-b1af-721deff0f62a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Random">
+      <UniqueIdentifier>{63071802-00c4-4fe8-8767-37e5829c9146}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Forces">
+      <UniqueIdentifier>{0c29ddf9-c7b3-4785-9cfd-9dd0bd26a5d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{222a447f-aec0-4684-97f9-46fa86d3450c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Forces\Generators">
+      <UniqueIdentifier>{02878075-4aed-4965-a9f4-3cf862620bb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{f76398a6-29de-4996-a0f9-3762391c1a4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obstacle">
+      <UniqueIdentifier>{53374fb2-fb35-4dbf-bf9f-a487671d9d12}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
